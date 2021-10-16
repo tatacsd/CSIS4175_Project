@@ -7,4 +7,24 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+<!--    Katching colours-->
+
+<!--    Layout-->
+    <color name="PrimaryPurple">#835AFD</color>
+    <color name="SecondaryGreen">#4FE090</color>
+    <color name="Background">#F8F8F8</color>
+    <color name="HoverGreen">#47C37F</color>
+    <color name="HoverRed">#D73754</color>
+    <color name="HoverPurple">#704DD9</color>
+    <color name="HoverGray">#F5F4F4</color>
+    <color name="DisabledGray">#FFFFFFFF</color>
+    <color name="red">#E73F5D</color>
+    <color name="lightGreen">#B9FFD8</color>
+<!--    Text-->
+    <color name="TextWhite">#EFEBEB</color>
+    <color name="TextBody">#ABB1CC</color>
+    <color name="TextHeading">#DDE3F0</color>
+
+
 </resources>
