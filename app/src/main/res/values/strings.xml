@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Katching</string>
+    <string name="main_login_text">Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit.</string>
+    <string name="login_btn_title">Login</string>
+    <string name="signup_btn_title">Signup</string>
+</resources>

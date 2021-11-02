@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/CSIS4175_Project.iml" filepath="$PROJECT_DIR$/.idea/CSIS4175_Project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Katching.iml" filepath="$PROJECT_DIR$/.idea/Katching.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Katching.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Katching.app.iml" />
     </modules>
   </component>
 </project>

@@ -4,7 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/luanc/OneDrive/Documentos/Academic/DOUGLAS/Fall-2021/CSIS-4175-001_35589_202130 Mobile App Development II/Assignments/Project/CSIS4175_Project/Katching/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/WORK/CSIS4175_Project/Katching/app/src/main/res/layout/activity_main.xml" value="0.11574074074074074" />
+        <entry key="..\:/WORK/CSIS4175_Project/Katching/app/src/main/res/drawable/button_green_hover.xml" value="0.20572916666666666" />
+        <entry key="..\:/WORK/CSIS4175_Project/Katching/app/src/main/res/drawable/button_green_pressed.xml" value="0.20572916666666666" />
+        <entry key="..\:/WORK/CSIS4175_Project/Katching/app/src/main/res/layout/activity_main.xml" value="0.176" />
+        <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/activity_main.xml" value="0.2265625" />
       </map>
     </option>
   </component>
