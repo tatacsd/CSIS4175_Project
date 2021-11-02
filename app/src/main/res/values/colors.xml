@@ -21,6 +21,7 @@
     <color name="DisabledGray">#FFFFFFFF</color>
     <color name="red">#E73F5D</color>
     <color name="lightGreen">#B9FFD8</color>
+    <color name="lightPurple">#D9CCFF</color>
 <!--    Text-->
     <color name="TextWhite">#EFEBEB</color>
     <color name="TextBody">#ABB1CC</color>
