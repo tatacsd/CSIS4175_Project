@@ -8,4 +8,7 @@
     <string name="your_account_title">Your Account</string>
     <string name="your_account_balance">Balance</string>
     <string name="your_account_value">$2,800.80 cad</string>
+    <string name="logout_text_one">Thank you for using</string>
+    <string name="logout_text_two">Katching</string>
+    <string name="logout_text_three">Looking forward to see you soon.</string>
 </resources>
