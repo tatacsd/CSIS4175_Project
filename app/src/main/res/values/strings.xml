@@ -3,4 +3,15 @@
     <string name="main_login_text">Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit.</string>
     <string name="login_btn_title">Login</string>
     <string name="signup_btn_title">Signup</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="username_tag">Username</string>
+    <string name="password_tag">Password</string>
 </resources>

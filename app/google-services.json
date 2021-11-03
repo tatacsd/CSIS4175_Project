@@ -1,33 +1,34 @@
 {
   "project_info": {
-    "project_number": "833866176386",
-    "project_id": "fir-loginexample-9495c",
-    "storage_bucket": "fir-loginexample-9495c.appspot.com"
+    "project_number": "672127439556",
+    "firebase_url": "https://csis4175-project-katching-default-rtdb.firebaseio.com",
+    "project_id": "csis4175-project-katching",
+    "storage_bucket": "csis4175-project-katching.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:833866176386:android:f4984cf88d4ab735b7a19b",
+        "mobilesdk_app_id": "1:672127439556:android:d05ae8ba828f00edd56f91",
         "android_client_info": {
-          "package_name": "com.example.firebaseloginexampleapp"
+          "package_name": "com.group2.katching"
         }
       },
       "oauth_client": [
         {
-          "client_id": "833866176386-oeo3bdctb6u7kdmnfvsh2d8p3b9qm4bj.apps.googleusercontent.com",
+          "client_id": "672127439556-1j1mcnejejnu7dq0t4tfm99md4pn90up.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDw5uJr1bf4jyzuA92Wr6XwFIbFLzKNEok"
+          "current_key": "AIzaSyD4k1oaQIniytUzX4XVIry1D2jmRLP1bkk"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "833866176386-oeo3bdctb6u7kdmnfvsh2d8p3b9qm4bj.apps.googleusercontent.com",
+              "client_id": "672127439556-1j1mcnejejnu7dq0t4tfm99md4pn90up.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
