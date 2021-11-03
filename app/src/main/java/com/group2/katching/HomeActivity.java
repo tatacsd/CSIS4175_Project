@@ -26,7 +26,6 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void displayTransferFragment() {
-        TransferFragment simpleFragment = TransferFragment.newInstance();
 
         // TODO: Get the FragmentManager and start a transaction.
         FragmentManager fragmentManager = getSupportFragmentManager();
