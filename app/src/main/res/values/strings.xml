@@ -31,4 +31,6 @@
     <string name="transfer_title_txt">Transfer</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="admin_username_ex">johnsmith</string>
+    <string name="user_s_list">User\'s list</string>
 </resources>
