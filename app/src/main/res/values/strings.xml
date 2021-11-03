@@ -21,4 +21,6 @@
     <string name="login_failed">"Login failed"</string>
     <string name="username_tag">Username</string>
     <string name="password_tag">Password</string>
+    <string name="admin_username_ex">johnsmith</string>
+    <string name="user_s_list">User\'s list</string>
 </resources>

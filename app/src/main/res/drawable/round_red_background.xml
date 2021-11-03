@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/shadow_delete_btn"/>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/red"/>
+            <corners
+                android:bottomRightRadius="@dimen/delete_btn_corners"
+                android:bottomLeftRadius="@dimen/delete_btn_corners"
+                android:topLeftRadius="@dimen/delete_btn_corners"
+                android:topRightRadius="@dimen/delete_btn_corners"/>
+        </shape>
+    </item>
+
+</layer-list>
