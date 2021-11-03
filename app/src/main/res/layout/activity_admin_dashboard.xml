@@ -13,7 +13,8 @@
         android:fontFamily="@font/rajdhani_bold"
         android:text="@string/user_s_list"
         android:textSize="24sp"
-        android:paddingLeft="14dp"/>
+        android:paddingLeft="14dp"
+        android:paddingTop="14dp"/>
 
 <!--    Recycler view with a scroll-->
     <ScrollView
