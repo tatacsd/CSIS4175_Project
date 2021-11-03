@@ -6,10 +6,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-
-import com.group2.katching.ui.login.LoginFragment;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,6 +40,12 @@ public class MainActivity extends AppCompatActivity {
                 addFragmentToView(new LoginFragment());
             }
         });
+        // Get toolbar items reference
+        ImageView toolbar_arrowBack = findViewById(R.id.toolbar_backArrow);
+        ImageView toolbar_logo = findViewById(R.id.toolbar_logo);
+        TextView toolbar_appName = findViewById(R.id.toolbar_app_name);
+        ImageView toolbar_menu = findViewById(R.id.toolbar_menu);
+
     }
 
     // Method that add the fragment to the view
@@ -52,8 +56,5 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.frameLayout, fragment);
         fragmentTransaction.commit();
     }
-
-
-
 
 }

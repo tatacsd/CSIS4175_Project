@@ -12,12 +12,13 @@
         <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/drawable/round_red_background.xml" value="0.2994791666666667" />
         <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/activity_admin_dashboard.xml" value="0.264" />
         <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/activity_logout.xml" value="0.2518518518518518" />
-        <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/activity_main.xml" value="0.4" />
+        <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/activity_signup.xml" value="0.24351851851851852" />
         <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/admin_recyclerview_item.xml" value="0.264" />
         <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/fragment_login.xml" value="0.24351851851851852" />
         <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/fragment_signup.xml" value="0.24351851851851852" />
         <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/fragment_your_account.xml" value="0.264" />
+        <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/toolbar.xml" value="0.2" />
       </map>
     </option>
   </component>
