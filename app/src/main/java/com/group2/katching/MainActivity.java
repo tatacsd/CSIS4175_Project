@@ -4,8 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.core.content.ContextCompat;
 
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Layout;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -42,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         });
         // Get toolbar items reference
         ImageView toolbar_arrowBack = findViewById(R.id.toolbar_backArrow);
+        View toolbar_id = findViewById(R.id.toolbar_id);
         ImageView toolbar_logo = findViewById(R.id.toolbar_logo);
         TextView toolbar_appName = findViewById(R.id.toolbar_app_name);
         ImageView toolbar_menu = findViewById(R.id.toolbar_menu);
