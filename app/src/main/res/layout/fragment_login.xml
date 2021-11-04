@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
-    android:layout_height="600dp"
+    android:layout_height="580dp"
     android:background="@color/SecondaryGreen"
     tools:context=".ui.login.LoginFragment">
 
