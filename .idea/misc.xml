@@ -24,6 +24,7 @@
         <entry key="app/src/main/res/layout/fragment_deposit.xml" value="0.2953703703703704" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_second.xml" value="0.16770833333333332" />
+        <entry key="app/src/main/res/layout/fragment_transfer.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/fragment_your_account.xml" value="0.335" />
       </map>
     </option>

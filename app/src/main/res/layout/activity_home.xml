@@ -23,7 +23,7 @@
         android:layout_marginTop="480dp"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/transferFragment"
         app:layout_constraintTop_toTopOf="@+id/accountFragment" />
 
     <!-- N1-->
@@ -34,7 +34,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="480dp"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/depositFragment"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@+id/accountFragment" />
     <!-- N1-->
