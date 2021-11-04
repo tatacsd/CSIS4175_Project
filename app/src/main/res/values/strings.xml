@@ -3,8 +3,6 @@
     <string name="main_login_text">Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit.</string>
     <string name="login_btn_title">Login</string>
     <string name="signup_btn_title">Signup</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="your_account_title">Your Account</string>
     <string name="your_account_balance">Balance</string>
     <string name="your_account_value">$2,800.80 cad</string>
     <string name="logout_text_one">Thank you for using</string>
