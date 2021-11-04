@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="15dp">
+
+<!--    Textview for date-->
+    <TextView
+        android:id="@+id/recycle_item_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/rajdhani_bold"
+        android:text="Fri, Oct 1, 2021"
+        android:textColor="@color/PrimaryPurple"
+        android:textSize="24sp"
+        android:textAlignment="textStart"
+        android:paddingLeft="15dp"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="10dp">
+        <!--Textview for payment-->
+        <TextView
+            android:id="@+id/recycle_item_transaction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Miscellaneous Payment"
+            android:textSize="16sp"
+            android:textColor="@color/TextBody"
+            android:fontFamily="@font/rajdhani_bold"
+            android:paddingLeft="25sp"/>
+        <!--    Textview for currency-->
+        <TextView
+            android:id="@+id/recycle_item_currency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/TextBody"
+            android:fontFamily="@font/rajdhani_bold"
+            android:textAlignment="textEnd"
+            android:paddingRight="10dp"
+            android:text="Cad" />
+
+    </LinearLayout>
+
+<!--    textview for amount-->
+    <TextView
+        android:id="@+id/recycle_item_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/SecondaryGreen"
+        android:fontFamily="@font/rajdhani_bold"
+        android:textAlignment="textEnd"
+        android:paddingRight="10dp"
+        android:text="$2,000.00" />
+
+</LinearLayout>

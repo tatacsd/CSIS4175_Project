@@ -15,6 +15,7 @@
         <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/activity_logout.xml" value="0.2518518518518518" />
         <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/activity_signup.xml" value="0.24351851851851852" />
+        <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/activity_transactions.xml" value="0.264" />
         <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/admin_recyclerview_item.xml" value="0.264" />
         <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/fragment_deposit.xml" value="0.13796296296296295" />
         <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/fragment_login.xml" value="0.24351851851851852" />
@@ -22,6 +23,7 @@
         <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/fragment_transfer.xml" value="0.13796296296296295" />
         <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/fragment_your_account.xml" value="0.264" />
         <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/toolbar.xml" value="0.2" />
+        <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/transaction_recycleview_item.xml" value="0.4" />
       </map>
     </option>
   </component>
