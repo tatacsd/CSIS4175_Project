@@ -12,37 +12,46 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
         android:layout_marginEnd="52dp"
-        android:layout_marginBottom="165dp"
-        android:textSize="24sp"
         android:fontWeight="600"
         android:text="@string/main_login_text"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/login_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="503dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/login_btn"
         android:layout_width="@dimen/main_btn_width"
         android:layout_height="@dimen/main_btn_height"
-        android:layout_marginBottom="33dp"
-        android:text="@string/login_btn_title"
-        android:textColor="@color/TextWhite"
+        android:layout_marginBottom="16dp"
         android:backgroundTint="@color/SecondaryGreen"
+        android:text="@string/login_btn_title"
 
-        app:layout_constraintBottom_toTopOf="@+id/signup_btn"
+        android:textColor="@color/TextWhite"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.392"
+        app:layout_constraintStart_toEndOf="@+id/signup_btn" />
 
     <Button
         android:id="@+id/signup_btn"
         android:layout_width="@dimen/main_btn_width"
         android:layout_height="@dimen/main_btn_height"
-        android:layout_marginBottom="58dp"
-        android:text="@string/signup_btn_title"
+        android:layout_marginStart="28dp"
+        android:layout_marginBottom="16dp"
         android:backgroundTint="@color/SecondaryGreen"
+        android:text="@string/signup_btn_title"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
