@@ -4,33 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DepositActivity">
+    tools:context=".TransferActivity">
 
     <include
-        android:id="@+id/toolbar_deposit"
+        android:id="@+id/toolbar_transfer"
         layout="@layout/toolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_depositAmount"
+        android:id="@+id/cl_transferAmount"
         android:layout_width="375dp"
         android:layout_height="250dp"
-        android:layout_marginTop="77dp"
+        android:layout_marginTop="36dp"
         android:background="@drawable/round_background_purple"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_deposit">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_transfer">
 
 
         <TextView
-            android:id="@+id/tv_value_deposit"
+            android:id="@+id/tv_value_transfer"
             android:layout_width="162dp"
             android:layout_height="73dp"
             android:fontFamily="@font/rajdhani_medium"
             android:gravity="center_horizontal|center_vertical"
-            android:text="@string/txtDepValue"
+            android:text="@string/txtTransferValue"
             android:textColor="@color/PrimaryPurple"
             android:textSize="40sp"
             android:textStyle="bold"
@@ -41,7 +41,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/increase_btn_deposit"
+            android:id="@+id/increase_btn_transfer"
             android:layout_width="60dp"
             android:layout_height="73dp"
             android:background="@drawable/round_background"
@@ -49,14 +49,14 @@
             android:text="@string/txtIncreaseBtn"
             android:textSize="34sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_value_deposit"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_value_transfer"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/tv_value_deposit"
-            app:layout_constraintTop_toTopOf="@+id/tv_value_deposit" />
+            app:layout_constraintStart_toEndOf="@+id/tv_value_transfer"
+            app:layout_constraintTop_toTopOf="@+id/tv_value_transfer" />
 
         <Button
-            android:id="@+id/decrease_btn_deposit"
+            android:id="@+id/decrease_btn_transfer"
             android:layout_width="60dp"
             android:layout_height="73dp"
             android:background="@drawable/round_background"
@@ -65,26 +65,56 @@
             android:textSize="34sp"
             android:textStyle="bold"
             app:iconTint="@color/TextWhite"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_value_deposit"
-            app:layout_constraintEnd_toStartOf="@+id/tv_value_deposit"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_value_transfer"
+            app:layout_constraintEnd_toStartOf="@+id/tv_value_transfer"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_value_deposit"
+            app:layout_constraintTop_toTopOf="@+id/tv_value_transfer"
             app:rippleColor="@color/TextWhite" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageButton
-        android:id="@+id/deposit_btn"
-        android:layout_width="78dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="60dp"
+        android:id="@+id/transfer_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:background="@drawable/round_background_purple"
-        android:src="@drawable/deposit"
+        android:src="@drawable/transfer"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cl_depositAmount" />
+        app:layout_constraintTop_toBottomOf="@+id/cl_transferUser"
+        tools:ignore="SpeakableTextPresentCheck" />
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_transferUser"
+        android:layout_width="358dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/round_background_purple"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cl_transferAmount">
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="329dp"
+            android:layout_height="48dp"
+            android:background="@drawable/round_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_userTransfer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/round_background"
+                android:hint="@string/et_hint_transfer"
+                tools:ignore="TouchTargetSizeCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

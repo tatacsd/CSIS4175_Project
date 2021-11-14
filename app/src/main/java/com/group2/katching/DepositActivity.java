@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,8 +13,8 @@ public class DepositActivity extends AppCompatActivity {
 
     Button btnIncAmount = findViewById(R.id.increase_btn_deposit);
     Button btnDecAmount = findViewById(R.id.decrease_btn_deposit);
-    Button btnDeposit = findViewById(R.id.deposit_btn);
-    TextView value = findViewById(R.id.tv_value_deposit);
+    ImageButton btnDeposit = findViewById(R.id.deposit_btn);
+    TextView valueDeposit = findViewById(R.id.tv_value_deposit);
     Double depValue = 0.00;
 
     @Override
@@ -24,11 +25,13 @@ public class DepositActivity extends AppCompatActivity {
         btnDecAmount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(depValue == 0) {
+                if(depValue <= 0) {
                     Toast.makeText(DepositActivity.this, "Negative values not accepted", Toast.LENGTH_SHORT).show();
+                } if(depValue == 0){
+                    Toast.makeText(DepositActivity.this, "Value for deposit should be bigger than zero", Toast.LENGTH_SHORT).show();
                 } else {
                     depValue -= 0.50;
-                    value.setText(depValue.toString());
+                    valueDeposit.setText(depValue.toString());
                 }
             }
         });
@@ -37,7 +40,7 @@ public class DepositActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 depValue += 0.50;
-                value.setText(depValue.toString());
+                valueDeposit.setText(depValue.toString());
             }
         });
 
