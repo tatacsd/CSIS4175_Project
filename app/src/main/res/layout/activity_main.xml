@@ -7,9 +7,15 @@
     android:background="@color/PrimaryPurple"
     tools:context=".MainActivity">
 
-    <include layout="@layout/toolbar" />
+    <include
+        android:id="@+id/toolbar_main"
+        layout="@layout/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/tv_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
@@ -17,43 +23,45 @@
         android:fontWeight="600"
         android:text="@string/main_login_text"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/login_btn"
+        app:layout_constraintBottom_toTopOf="@+id/login_btn_main"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <FrameLayout
-        android:id="@+id/frameLayout"
+        android:id="@+id/frameLayout_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/login_btn"
+        android:id="@+id/signup_btn_main"
         android:layout_width="@dimen/main_btn_width"
         android:layout_height="@dimen/main_btn_height"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/SecondaryGreen"
-        android:text="@string/login_btn_title"
-
-        android:textColor="@color/TextWhite"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.392"
-        app:layout_constraintStart_toEndOf="@+id/signup_btn" />
-
-    <Button
-        android:id="@+id/signup_btn"
-        android:layout_width="@dimen/main_btn_width"
-        android:layout_height="@dimen/main_btn_height"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="25dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/SecondaryGreen"
         android:text="@string/signup_btn_title"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/login_btn_main"
+        android:layout_width="@dimen/main_btn_width"
+        android:layout_height="@dimen/main_btn_height"
+
+        android:layout_marginEnd="25dp"
+        android:backgroundTint="@color/SecondaryGreen"
+        android:text="@string/login_btn_title"
+        android:textColor="@color/TextWhite"
+        app:layout_constraintBottom_toBottomOf="@+id/signup_btn_main"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/signup_btn_main"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

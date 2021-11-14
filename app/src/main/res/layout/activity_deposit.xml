@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DepositActivity">
+
+    <include
+        android:id="@+id/toolbar_deposit"
+        layout="@layout/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="375dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="77dp"
+        android:background="@drawable/round_background_purple"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_deposit">
+
+
+        <TextView
+            android:id="@+id/tv_value_deposit"
+            android:layout_width="162dp"
+            android:layout_height="73dp"
+            android:fontFamily="@font/rajdhani_medium"
+            android:gravity="center_vertical"
+            android:text="@string/txtDepValue"
+            android:textAlignment="center"
+            android:textColor="@color/PrimaryPurple"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/increase_btn_deposit"
+            android:layout_width="60dp"
+            android:layout_height="73dp"
+            android:background="@drawable/round_background"
+            android:fontFamily="@font/rajdhani_medium"
+            android:text="@string/txtIncreaseBtn"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_value_deposit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tv_value_deposit"
+            app:layout_constraintTop_toTopOf="@+id/tv_value_deposit" />
+
+        <Button
+            android:id="@+id/decrease_btn_deposit"
+            android:layout_width="60dp"
+            android:layout_height="73dp"
+            android:background="@drawable/round_background"
+            android:fontFamily="@font/rajdhani_medium"
+            android:text="@string/txtDecreaseBtn"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:iconTint="@color/TextWhite"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_value_deposit"
+            app:layout_constraintEnd_toStartOf="@+id/tv_value_deposit"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_value_deposit"
+            app:rippleColor="@color/TextWhite" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/deposit_btn"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/round_background"
+        android:fontFamily="@font/roboto"
+        android:text="@string/deposit_btn"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+        android:drawableLeft="@drawable/deposit"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -33,4 +33,9 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="admin_username_ex">johnsmith</string>
     <string name="user_s_list">User\'s list</string>
+    <!-- Deposit Screen -->
+    <string name="txtIncreaseBtn">+</string>
+    <string name="txtDecreaseBtn">-</string>
+    <string name="txtDepValue">$ 00.00</string>
+    <string name="deposit_btn">Deposit</string>
 </resources>
