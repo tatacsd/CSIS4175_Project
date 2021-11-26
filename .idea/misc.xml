@@ -4,6 +4,14 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/luanc/OneDrive/Documentos/Academic/DOUGLAS/Fall-2021/CSIS-4175-001_35589_202130 Mobile App Development II/Assignments/Project/CSIS4175_Project/Katching/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/luanc/OneDrive/Documentos/Academic/DOUGLAS/Fall-2021/CSIS-4175-001_35589_202130 Mobile App Development II/Assignments/Project/CSIS4175_Project/app/src/main/res/drawable/round_background.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/luanc/OneDrive/Documentos/Academic/DOUGLAS/Fall-2021/CSIS-4175-001_35589_202130 Mobile App Development II/Assignments/Project/CSIS4175_Project/app/src/main/res/layout/activity_deposit.xml" value="0.25" />
+        <entry key="..\:/Users/luanc/OneDrive/Documentos/Academic/DOUGLAS/Fall-2021/CSIS-4175-001_35589_202130 Mobile App Development II/Assignments/Project/CSIS4175_Project/app/src/main/res/layout/activity_main.xml" value="0.20833333333333334" />
+        <entry key="..\:/Users/luanc/OneDrive/Documentos/Academic/DOUGLAS/Fall-2021/CSIS-4175-001_35589_202130 Mobile App Development II/Assignments/Project/CSIS4175_Project/app/src/main/res/layout/activity_transfer.xml" value="0.25" />
+        <entry key="..\:/Users/luanc/OneDrive/Documentos/Academic/DOUGLAS/Fall-2021/CSIS-4175-001_35589_202130 Mobile App Development II/Assignments/Project/CSIS4175_Project/app/src/main/res/layout/fragment_deposit.xml" value="0.25" />
+        <entry key="..\:/Users/luanc/OneDrive/Documentos/Academic/DOUGLAS/Fall-2021/CSIS-4175-001_35589_202130 Mobile App Development II/Assignments/Project/CSIS4175_Project/app/src/main/res/layout/fragment_login.xml" value="0.2175925925925926" />
+        <entry key="..\:/Users/luanc/OneDrive/Documentos/Academic/DOUGLAS/Fall-2021/CSIS-4175-001_35589_202130 Mobile App Development II/Assignments/Project/CSIS4175_Project/app/src/main/res/layout/fragment_signup.xml" value="0.2074074074074074" />
+        <entry key="..\:/Users/luanc/OneDrive/Documentos/Academic/DOUGLAS/Fall-2021/CSIS-4175-001_35589_202130 Mobile App Development II/Assignments/Project/CSIS4175_Project/app/src/main/res/layout/toolbar.xml" value="0.25" />
         <entry key="..\:/WORK/CSIS4175_Project/Katching/app/src/main/res/drawable/button_green_hover.xml" value="0.20572916666666666" />
         <entry key="..\:/WORK/CSIS4175_Project/Katching/app/src/main/res/drawable/button_green_pressed.xml" value="0.20572916666666666" />
         <entry key="..\:/WORK/CSIS4175_Project/Katching/app/src/main/res/layout/activity_main.xml" value="0.176" />

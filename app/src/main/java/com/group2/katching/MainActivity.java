@@ -1,7 +1,6 @@
 package com.group2.katching;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -33,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         // Create a button reference
-        signupFragmentBtn = findViewById(R.id.signup_btn);
-        loginFragmentBtn = findViewById(R.id.login_btn);
+        signupFragmentBtn = findViewById(R.id.signup_btn_main);
+        loginFragmentBtn = findViewById(R.id.login_btn_main);
 
         // Sign up click listener to inflate the fragment
         signupFragmentBtn.setOnClickListener(new View.OnClickListener() {
@@ -60,8 +59,7 @@ public class MainActivity extends AppCompatActivity {
         // Use fragment manager
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frameLayout, fragment);
+        fragmentTransaction.replace(R.id.frameLayout_main, fragment);
         fragmentTransaction.commit();
     }
-
 }

@@ -10,9 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Katching">
         <activity
+            android:name=".TransferActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DepositActivity"
+            android:exported="false" />
+        <activity
             android:name=".TransactionsActivity"
-            android:exported="true" >
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".AdminDashboard"
             android:exported="true" />
@@ -21,9 +26,7 @@
             android:exported="true" />
         <activity
             android:name=".HomeActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
