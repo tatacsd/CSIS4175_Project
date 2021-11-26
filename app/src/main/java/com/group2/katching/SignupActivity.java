@@ -36,6 +36,7 @@ public class SignupActivity extends AppCompatActivity {
     private FirebaseDatabase mFirebaseInstance;
     private double balance = 0;
     private boolean status = false;
+    private String userID;
 
     private static final String TAG = "FIREBASE AUTHENTICATION";
 
@@ -44,34 +45,40 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        Toast.makeText(SignupActivity.this, "test toast", Toast.LENGTH_SHORT).show();
-
-        auth = FirebaseAuth.getInstance();
-
+        // Reference member variables
         signupInputEmail = (EditText) findViewById(R.id.txtUserEmail);
         signupInputPassword = (EditText) findViewById(R.id.password);
-
         btnSignUp = (Button) findViewById(R.id.btnSignup);
+
+        // Firebase instances
+        auth = FirebaseAuth.getInstance();
+        // Get the reference to the database on firebase
         mFirebaseInstance = FirebaseDatabase.getInstance();
+        // get reference to 'users' node
         mFirebaseDatabase = mFirebaseInstance.getReference("users");
 
-
-
-        btnSignUp.setOnClickListener(new View.OnClickListener() {
+        mFirebaseDatabase.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View view) {
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                return;
+            }
 
-                submitForm();
-
-                Toast.makeText(SignupActivity.this, "signed up", Toast.LENGTH_SHORT).show();
-
-                SignupActivity.super.onBackPressed();
-
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.e(TAG, "Failed to read user to the other app", error.toException());
             }
         });
 
-
-
+        // Set up the sign up button
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                submitForm();
+                Toast.makeText(SignupActivity.this, "signed up", Toast.LENGTH_SHORT).show();
+                SignupActivity.super.onBackPressed();
+            }
+        });
 
     }
 
@@ -79,20 +86,20 @@ public class SignupActivity extends AppCompatActivity {
         String email = signupInputEmail.getText().toString().trim();
         String password = signupInputPassword.getText().toString().trim();
 
-        if(!checkEmail()) {
+        if (!checkEmail()) {
             return;
         }
-        if(!checkPassword()) {
+        if (!checkPassword()) {
             return;
         }
-        //setErrorEnabled
+        // setErrorEnabled
 
-        auth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(SignupActivity.this, new OnCompleteListener<AuthResult>() {
+        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(SignupActivity.this,
+                new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(Task<AuthResult> task) {
                         Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
-                        if(task.isSuccessful()) {
+                        if (task.isSuccessful()) {
                             startActivity(new Intent(SignupActivity.this, HomeActivity.class));
                             finish();
                         } else {
@@ -101,13 +108,10 @@ public class SignupActivity extends AppCompatActivity {
                     }
                 });
 
-        if(TextUtils.isEmpty(email)) {
+        if (!TextUtils.isEmpty(email)) {
             createUser(email, balance, status);
         }
-
-        Toast.makeText(getApplicationContext(),
-                "You are successfully registered!", Toast.LENGTH_SHORT).show();
-
+        Toast.makeText(getApplicationContext(), "You are successfully registered!", Toast.LENGTH_SHORT).show();
 
     }
 
@@ -115,92 +119,53 @@ public class SignupActivity extends AppCompatActivity {
         // In real apps this userId should be fetched
         // if you dont have an id, create one
 
-        //add the user object values
-         User user = new User(email, status, balance);
-         mFirebaseDatabase.child(email).setValue(user);
-          }
+        // split email on @
+        String[] emailSplit = email.split("@");
+        String userId = emailSplit[0];
 
-//    private void addUserChangeListener() {
-//    }
-
-    private boolean checkEmail() {
-
-        String email = signupInputEmail.getText().toString().trim();
-
-        if (email.isEmpty() || !isEmailValid(email)) {
-
-
-
-            //Todo: Enter error message here
-
-//            signupInputLayoutEmail.setError(getString(R.string.err_msg_email));
-//
-//            signupInputEmail.setError(getString(R.string.err_msg_required));
-
-            requestFocus(signupInputEmail);
-
-            return false;
-
-        }
-
-        //Todo: Enter error message here
-//        signupInputLayoutEmail.setErrorEnabled(false);
-
-        return true;
-
+        // add the user object values
+        User user = new User(email, status, balance);
+        mFirebaseDatabase.child(userId).setValue(user);
     }
 
-
+    private boolean checkEmail() {
+        String email = signupInputEmail.getText().toString().trim();
+        if (email.isEmpty() || !isEmailValid(email)) {
+            Toast.makeText(getApplicationContext(), "Please insert a valid email!", Toast.LENGTH_SHORT).show();
+            requestFocus(signupInputEmail);
+            return false;
+        }
+        return true;
+    }
 
     private boolean checkPassword() {
-
-
-
         String password = signupInputPassword.getText().toString().trim();
-
         if (password.isEmpty() || !isPasswordValid(password)) {
-
-
-            //Todo: Enter error message here
-//            signupInputLayoutPassword.setError(getString(R.string.err_msg_password));
-
-//            signupInputPassword.setError(getString(R.string.err_msg_required));
-
+            Toast.makeText(getApplicationContext(), "Invalid password!", Toast.LENGTH_SHORT).show();
             requestFocus(signupInputPassword);
             return false;
         }
-        //Todo: Enter error message here
-//        signupInputLayoutPassword.setErrorEnabled(false);
         return true;
     }
-
-
 
     private static boolean isEmailValid(String email) {
         return !TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
-
-
     private static boolean isPasswordValid(String password) {
         return (password.length() >= 6);
     }
 
-
-
     private void requestFocus(View view) {
-
         if (view.requestFocus()) {
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
         }
-
     }
 
     @Override
-
     protected void onResume() {
         super.onResume();
-//        progressBar.setVisibility(View.GONE);
+        // progressBar.setVisibility(View.GONE);
 
     }
 }
