@@ -1,14 +1,14 @@
 package com.group2.katching.entity;
 
 public class User {
+    private String email;
     private String firstName;
     private String lastName;
-    private String userStatus;
-    private float balance;
+    private boolean userStatus;
+    private double balance;
 
-    public User(String firstname, String lastName, String userStatus, float balance) {
-        this.firstName = firstname;
-        this.lastName = lastName;
+    public User(String email, boolean userStatus, double balance) {
+        this.email = email;
         this.userStatus = userStatus;
         this.balance = balance;
     }
@@ -29,15 +29,15 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getUserStatus() {
+    public boolean getUserStatus() {
         return userStatus;
     }
 
-    public void setUserStatus(String userStatus) {
+    public void setUserStatus(boolean userStatus) {
         this.userStatus = userStatus;
     }
 
-    public float getBalance() {
+    public double getBalance() {
         return balance;
     }
 

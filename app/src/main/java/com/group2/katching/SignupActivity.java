@@ -1,5 +1,6 @@
 package com.group2.katching;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -16,6 +17,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.group2.katching.entity.User;
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -25,6 +32,10 @@ public class SignupActivity extends AppCompatActivity {
     private EditText signupInputPassword;
     private Button btnSignUp;
     private Button btnLinkToLogIn;
+    private DatabaseReference mFirebaseDatabase;
+    private FirebaseDatabase mFirebaseInstance;
+    private double balance = 0;
+    private boolean status = false;
 
     private static final String TAG = "FIREBASE AUTHENTICATION";
 
@@ -41,14 +52,27 @@ public class SignupActivity extends AppCompatActivity {
         signupInputPassword = (EditText) findViewById(R.id.password);
 
         btnSignUp = (Button) findViewById(R.id.btnSignup);
+        mFirebaseInstance = FirebaseDatabase.getInstance();
+        mFirebaseDatabase = mFirebaseInstance.getReference("users");
+
+
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 submitForm();
+
                 Toast.makeText(SignupActivity.this, "signed up", Toast.LENGTH_SHORT).show();
+
+                SignupActivity.super.onBackPressed();
+
             }
         });
+
+
+
+
     }
 
     private void submitForm() {
@@ -77,11 +101,27 @@ public class SignupActivity extends AppCompatActivity {
                     }
                 });
 
+        if(TextUtils.isEmpty(email)) {
+            createUser(email, balance, status);
+        }
+
         Toast.makeText(getApplicationContext(),
                 "You are successfully registered!", Toast.LENGTH_SHORT).show();
 
 
     }
+
+    private void createUser(String email, double balance, boolean Status) {
+        // In real apps this userId should be fetched
+        // if you dont have an id, create one
+
+        //add the user object values
+         User user = new User(email, status, balance);
+         mFirebaseDatabase.child(email).setValue(user);
+          }
+
+//    private void addUserChangeListener() {
+//    }
 
     private boolean checkEmail() {
 
