@@ -92,7 +92,6 @@ public class SignupActivity extends AppCompatActivity {
         if (!checkPassword()) {
             return;
         }
-        // setErrorEnabled
 
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(SignupActivity.this,
                 new OnCompleteListener<AuthResult>() {
@@ -115,17 +114,17 @@ public class SignupActivity extends AppCompatActivity {
 
     }
 
-    private void createUser(String email, double balance, boolean Status) {
-        // In real apps this userId should be fetched
-        // if you dont have an id, create one
-
-        // split email on @
-        String[] emailSplit = email.split("@");
-        String userId = emailSplit[0];
+    private void createUser(String email, double balance, boolean status) {
+        if (TextUtils.isEmpty(userID)) {
+            // In real apps this userId should be fetched
+            // if you dont have an id, create one
+            userID = mFirebaseDatabase.push().getKey();
+            Log.e("Created a new USER ID", userID);
+        }
 
         // add the user object values
         User user = new User(email, status, balance);
-        mFirebaseDatabase.child(userId).setValue(user);
+        mFirebaseDatabase.child(userID).setValue(user);
     }
 
     private boolean checkEmail() {
@@ -137,7 +136,6 @@ public class SignupActivity extends AppCompatActivity {
         }
         return true;
     }
-
     private boolean checkPassword() {
         String password = signupInputPassword.getText().toString().trim();
         if (password.isEmpty() || !isPasswordValid(password)) {
@@ -147,25 +145,15 @@ public class SignupActivity extends AppCompatActivity {
         }
         return true;
     }
-
     private static boolean isEmailValid(String email) {
         return !TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
-
     private static boolean isPasswordValid(String password) {
         return (password.length() >= 6);
     }
-
     private void requestFocus(View view) {
         if (view.requestFocus()) {
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
         }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        // progressBar.setVisibility(View.GONE);
-
     }
 }
