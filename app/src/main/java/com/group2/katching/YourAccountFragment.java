@@ -7,6 +7,13 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.group2.katching.entity.User;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -56,12 +63,26 @@ public class YourAccountFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
+
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        DatabaseReference mFirebaseDatabase;
+        FirebaseDatabase mFirebaseInstance;
+        mFirebaseInstance = FirebaseDatabase.getInstance();
+        mFirebaseDatabase = mFirebaseInstance.getReference("users");
+
+        User user = null;
+
+
+        final View rootView = inflater.inflate(R.layout.fragment_your_account, container, false);
+
+        final TextView tvBalance = rootView.findViewById(R.id.yourAccount_value);
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_your_account, container, false);
     }

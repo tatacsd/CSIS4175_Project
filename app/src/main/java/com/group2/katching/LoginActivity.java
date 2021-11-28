@@ -78,7 +78,10 @@ public class LoginActivity extends AppCompatActivity {
                                     //send user to viewmodel
                                     userViewModel.setUser(user);
 
-                                    startActivity(new Intent (LoginActivity.this, HomeActivity.class));
+                                    Intent intent = new Intent (LoginActivity.this, HomeActivity.class);
+                                    String userEmail = user.getEmail();
+                                    intent.putExtra(userEmail, user.getEmail());
+                                    startActivity(intent);
                                     finish();
                                 } else {
                                     Toast.makeText(LoginActivity.this, "failed to login", Toast.LENGTH_SHORT).show();
