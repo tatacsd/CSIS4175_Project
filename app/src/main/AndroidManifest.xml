@@ -22,6 +22,9 @@
             android:name=".AdminDashboard"
             android:exported="true" />
         <activity
+            android:name=".SignupActivity"
+            android:exported="true" />
+        <activity
             android:name=".LogoutActivity"
             android:exported="true" />
         <activity
@@ -41,5 +44,6 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
 </manifest>

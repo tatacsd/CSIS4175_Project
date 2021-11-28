@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -40,7 +41,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Inflate the fragment
-                addFragmentToView(new Signup());
+//                addFragmentToView(new Signup());
+
+                Intent intent = new Intent(MainActivity.this, SignupActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -49,17 +53,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Inflate the fragment
-                addFragmentToView(new LoginFragment());
+//                addFragmentToView(new LoginFragment());
             }
         });
     }
 
     // Method that add the fragment to the view
-    private void addFragmentToView(Fragment fragment) {
-        // Use fragment manager
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frameLayout_main, fragment);
-        fragmentTransaction.commit();
-    }
+//    private void addFragmentToView(Fragment fragment) {
+//        // Use fragment manager
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//        fragmentTransaction.replace(R.id.frameLayout_main, fragment);
+//        fragmentTransaction.commit();
+//    }
 }
