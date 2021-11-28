@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.group2.katching.ui.login.LoginFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -52,8 +51,7 @@ public class MainActivity extends AppCompatActivity {
         loginFragmentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Inflate the fragment
-//                addFragmentToView(new LoginFragment());
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
             }
         });
     }
