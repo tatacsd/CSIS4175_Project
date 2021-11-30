@@ -9,10 +9,16 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.group2.katching.ui.UserViewModel;
 
 public class HomeActivity extends AppCompatActivity {
@@ -21,6 +27,7 @@ public class HomeActivity extends AppCompatActivity {
     UserViewModel userViewModel;
     private FirebaseAuth.AuthStateListener authListener;
     private FirebaseAuth auth;
+    FirebaseDatabase mFirebase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,19 +44,40 @@ public class HomeActivity extends AppCompatActivity {
         authListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
+                final FirebaseUser user = firebaseAuth.getCurrentUser();
 
                 if(user == null){
                     startActivity(new Intent(HomeActivity.this,LoginActivity.class));
                     finish();
                 } else{
-                    user = firebaseAuth.getCurrentUser();
 
                     //just for test the user retrieving
                     String email = user.getEmail();
                     Toast.makeText(HomeActivity.this,email, Toast.LENGTH_LONG).show();
+                    mFirebase = FirebaseDatabase.getInstance();
+                    DatabaseReference data = mFirebase.getReference("users");
+                    data.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            boolean matchFound = false;
+                            for(DataSnapshot child : snapshot.getChildren()) {
+                                if(user.getEmail().equals(String.valueOf(child.child("email").getValue()).toLowerCase())) {
+                                    matchFound = true;
+                                }
+                            }
+                            if(matchFound)
+                                Log.v("found", "match for " + user.getEmail() + " found.");
+                            else
+                                Log.v("not found", "no match found");
+                        }
 
-                    
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+
+
 
                 }
             }
