@@ -40,6 +40,7 @@ public class HomeActivity extends AppCompatActivity {
         displayFragment(new YourAccountFragment(),R.id.accountFragment);
         displayFragment(new DepositFragment(),R.id.depositFragment);
         displayFragment(new TransferFragment(),R.id.transferFragment);
+        userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
 
         authListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -56,13 +57,17 @@ public class HomeActivity extends AppCompatActivity {
                     Toast.makeText(HomeActivity.this,email, Toast.LENGTH_LONG).show();
                     mFirebase = FirebaseDatabase.getInstance();
                     DatabaseReference data = mFirebase.getReference("users");
-                    data.addListenerForSingleValueEvent(new ValueEventListener() {
+                    data.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            Log.v("check", "changecheck");
                             boolean matchFound = false;
                             for(DataSnapshot child : snapshot.getChildren()) {
-                                if(user.getEmail().equals(String.valueOf(child.child("email").getValue()).toLowerCase())) {
+                                String email = String.valueOf(child.child("email").getValue()).toLowerCase();
+                                String balance = String.valueOf(child.child("balance").getValue()).toLowerCase();
+                                if(user.getEmail().equals(email)) {
                                     matchFound = true;
+                                    userViewModel.setUserData(balance);
                                 }
                             }
                             if(matchFound)

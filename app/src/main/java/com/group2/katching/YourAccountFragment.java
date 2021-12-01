@@ -3,7 +3,10 @@ package com.group2.katching;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +17,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.group2.katching.entity.User;
+import com.group2.katching.ui.UserViewModel;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -75,6 +79,18 @@ public class YourAccountFragment extends Fragment {
         FirebaseDatabase mFirebaseInstance;
         mFirebaseInstance = FirebaseDatabase.getInstance();
         mFirebaseDatabase = mFirebaseInstance.getReference("users");
+
+        UserViewModel viewModel = new ViewModelProvider(getActivity()).get(UserViewModel.class);
+        viewModel.userData.observeForever(new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                String balance;
+                balance = s;
+
+                TextView tvBalance = getView().findViewById(R.id.yourAccount_value);
+                tvBalance.setText("$" + balance + " CAD");
+            }
+        });
 
         User user = null;
 
