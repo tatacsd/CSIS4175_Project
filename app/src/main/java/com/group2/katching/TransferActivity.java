@@ -12,30 +12,31 @@ import android.widget.Toolbar;
 
 public class TransferActivity extends AppCompatActivity {
 
-//    Toolbar toolbar = findViewById(R.id.toolbar_transfer);
-    Button btnIncAmount = findViewById(R.id.increase_btn_transfer);
-    Button btnDecAmount = findViewById(R.id.decrease_btn_transfer);
-    ImageButton btnTransfer = findViewById(R.id.transfer_btn);
-    TextView valueTransfer = findViewById(R.id.tv_value_transfer);
-    Double transferValue = 0.00;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transfer);
 
+        //    Toolbar toolbar = findViewById(R.id.toolbar_transfer);
+        Button btnIncAmount = findViewById(R.id.increase_btn_transfer);
+        Button btnDecAmount = findViewById(R.id.decrease_btn_transfer);
+        ImageButton btnTransfer = findViewById(R.id.transfer_btn);
+        TextView valueTransfer = findViewById(R.id.tv_value_transfer);
+        final Double[] transferValue = {0.00};
 //        toolbar.setTitle("Transfer");
 
         btnDecAmount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(transferValue <= 0) {
+                if(transferValue[0] <= 0) {
                     Toast.makeText(TransferActivity.this, "Negative values not accepted", Toast.LENGTH_SHORT).show();
-                } if(transferValue == 0){
+                } if(transferValue[0] == 0){
                     Toast.makeText(TransferActivity.this, "The value for transference should be nigger than zero", Toast.LENGTH_SHORT).show();
                 }else {
-                    transferValue -= 0.50;
-                    valueTransfer.setText(transferValue.toString());
+                    transferValue[0] -= 0.50;
+                    valueTransfer.setText(transferValue[0].toString());
                 }
             }
         });
@@ -43,8 +44,8 @@ public class TransferActivity extends AppCompatActivity {
         btnIncAmount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                transferValue =+ 0.50;
-                valueTransfer.setText(valueTransfer.toString());
+                transferValue[0] += 0.50;
+                valueTransfer.setText(transferValue[0].toString());
             }
         });
 

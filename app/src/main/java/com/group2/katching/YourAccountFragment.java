@@ -81,11 +81,11 @@ public class YourAccountFragment extends Fragment {
         mFirebaseDatabase = mFirebaseInstance.getReference("users");
 
         UserViewModel viewModel = new ViewModelProvider(getActivity()).get(UserViewModel.class);
-        viewModel.userData.observeForever(new Observer<String>() {
+        viewModel.userData.observeForever(new Observer<User>() {
             @Override
-            public void onChanged(String s) {
+            public void onChanged(User s) {
                 String balance;
-                balance = s;
+                balance = String.valueOf(s.getBalance());
 
                 TextView tvBalance = getView().findViewById(R.id.yourAccount_value);
                 tvBalance.setText("$" + balance + " CAD");

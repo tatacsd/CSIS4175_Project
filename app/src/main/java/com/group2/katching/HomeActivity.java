@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.group2.katching.entity.User;
 import com.group2.katching.ui.UserViewModel;
 
 public class HomeActivity extends AppCompatActivity {
@@ -63,15 +64,17 @@ public class HomeActivity extends AppCompatActivity {
                             Log.v("check", "changecheck");
                             boolean matchFound = false;
                             for(DataSnapshot child : snapshot.getChildren()) {
+                                String dataBaseId = String.valueOf(child.getKey());
                                 String email = String.valueOf(child.child("email").getValue()).toLowerCase();
                                 String balance = String.valueOf(child.child("balance").getValue()).toLowerCase();
                                 if(user.getEmail().equals(email)) {
                                     matchFound = true;
-                                    userViewModel.setUserData(balance);
+                                    User appUser = new User(dataBaseId, email, false, Double.valueOf(balance));
+                                    userViewModel.setUserData(appUser);
                                 }
                             }
                             if(matchFound)
-                                Log.v("found", "match for " + user.getEmail() + " found.");
+                                Log.v("found", "match for " + user.getEmail() + "(id: " + userViewModel.getUserData().getDataBaseId() +")" + " found.");
                             else
                                 Log.v("not found", "no match found");
                         }

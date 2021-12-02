@@ -13,13 +13,13 @@ public class UserViewModel extends AndroidViewModel {
 
     private FirebaseUser user;
 
-    public MutableLiveData<String> userData = new MutableLiveData<String>();
+    public MutableLiveData<User> userData = new MutableLiveData<User>();
 
-    public String getUserData() {
+    public User getUserData() {
         return userData.getValue();
     }
 
-    public void setUserData(String userData) {
+    public void setUserData(User userData) {
         this.userData.setValue(userData);
     }
 
