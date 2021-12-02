@@ -75,10 +75,7 @@ public class YourAccountFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        DatabaseReference mFirebaseDatabase;
-        FirebaseDatabase mFirebaseInstance;
-        mFirebaseInstance = FirebaseDatabase.getInstance();
-        mFirebaseDatabase = mFirebaseInstance.getReference("users");
+
 
         UserViewModel viewModel = new ViewModelProvider(getActivity()).get(UserViewModel.class);
         viewModel.userData.observeForever(new Observer<User>() {
@@ -86,18 +83,10 @@ public class YourAccountFragment extends Fragment {
             public void onChanged(User s) {
                 String balance;
                 balance = String.valueOf(s.getBalance());
-
                 TextView tvBalance = getView().findViewById(R.id.yourAccount_value);
                 tvBalance.setText("$" + balance + " CAD");
             }
         });
-
-        User user = null;
-
-
-        final View rootView = inflater.inflate(R.layout.fragment_your_account, container, false);
-
-        final TextView tvBalance = rootView.findViewById(R.id.yourAccount_value);
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_your_account, container, false);
