@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -74,6 +76,7 @@ public class TransferActivity extends AppCompatActivity {
             }
         });
 
+
         btnTransfer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -117,9 +120,11 @@ public class TransferActivity extends AppCompatActivity {
                                     Log.v("Transfer:", "transfer of " + amount + "to" + receivingUser[0].getEmail()+ " successful!"); //log success to console
                                     return;
                                 } else {
-                                    Log.v("Transfer:", "insuficient amount to transfer");
+                                    Toast.makeText(TransferActivity.this, "insufficient amount to transfer", Toast.LENGTH_SHORT).show();
+                                    Log.v("Transfer:", "insufficient amount to transfer");
                                 }
                             } else
+                                Toast.makeText(TransferActivity.this, "no user found", Toast.LENGTH_SHORT).show();
                                 Log.v("not found", "no match found");
                         }
 
@@ -128,7 +133,11 @@ public class TransferActivity extends AppCompatActivity {
                     @Override
                     public void onCancelled (@NonNull DatabaseError error){
                     }
+
+
                 });
+
+                new Handler().postDelayed(new Runnable() { @Override public void run() { Intent intent = new Intent(TransferActivity.this, HomeActivity.class); startActivity(intent); } }, 1000);
             };
         });
     }
