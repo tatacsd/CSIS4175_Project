@@ -51,8 +51,6 @@ public class TransferActivity extends AppCompatActivity {
 
         final Double[] transferValue = {0.00};
 
-        //TODO: Check if user have enough balance to transfer
-
         btnDecAmount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
