@@ -123,7 +123,7 @@ public class SignupActivity extends AppCompatActivity {
         }
 
         // add the user object values
-        User user = new User(email, status, balance);
+        User user = new User(String.valueOf(userID), email, status, balance);
         mFirebaseDatabase.child(userID).setValue(user);
     }
 

@@ -40,6 +40,6 @@
     <string name="deposit_btn">Deposit</string>
     <!-- Transfer Activity -->
     <string name="transfer_btn">Transfer</string>
-    <string name="et_hint_transfer">User name to transfer the money</string>
+    <string name="et_hint_transfer">User email to transfer the money</string>
     <string name="txtTransferValue">$ 00.00</string>
 </resources>
