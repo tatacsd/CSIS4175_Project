@@ -84,7 +84,7 @@ public class TransferActivity extends AppCompatActivity {
                 // Checking user receiving email with database children
                 mFirebase = FirebaseDatabase.getInstance();
                 DatabaseReference data = mFirebase.getReference("users");
-                data.addValueEventListener(new ValueEventListener() {
+                data.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         Log.v("check", "changecheck");
