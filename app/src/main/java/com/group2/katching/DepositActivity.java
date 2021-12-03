@@ -17,8 +17,6 @@ public class DepositActivity extends AppCompatActivity {
 
     FirebaseDatabase mFirebase;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,14 +68,12 @@ public class DepositActivity extends AppCompatActivity {
                 if(key != null) {
                     Double amount = Double.valueOf(valueDeposit.getText().toString());
                     Double newBalance = (balance[0] + amount);
-                    Log.v("deposit:", "deposit of " + amount + "successful!"); //log success to console
+                    Log.v("deposit:", "deposit of " + amount + " successful!"); //log success to console
                     firebase.child(key).child("balance").setValue(newBalance);
                     //Show user successful deposit
                     Toast.makeText(DepositActivity.this, "Deposited $" + amount + " CAD"
                             ,Toast.LENGTH_SHORT).show();
-
                 }
-
             }
         });
     }

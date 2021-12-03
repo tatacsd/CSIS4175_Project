@@ -52,7 +52,6 @@ public class HomeActivity extends AppCompatActivity {
                     startActivity(new Intent(HomeActivity.this,LoginActivity.class));
                     finish();
                 } else{
-
                     //just for test the user retrieving
                     String email = user.getEmail();
                     Toast.makeText(HomeActivity.this,email, Toast.LENGTH_LONG).show();

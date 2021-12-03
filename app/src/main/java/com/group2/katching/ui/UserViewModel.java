@@ -23,8 +23,6 @@ public class UserViewModel extends AndroidViewModel {
         this.userData.setValue(userData);
     }
 
-
-
     public UserViewModel(@NonNull Application application) {
         super(application);
     }
