@@ -103,19 +103,21 @@ public class TransferActivity extends AppCompatActivity {
                             Log.v("found", "match for " + receivingUser[0].getEmail() + "(id: " + receivingUser[0].getDataBaseId() + ")" + " found.");
                             if (userSendingKey != null && receivingUser[0].getDataBaseId() != null) {
                                 // Get user sender amount
-                                Double amount = Double.valueOf(valueTransfer.getText().toString());
+                                Double amount = Double.valueOf(valueTransfer.getText().toString().replace("$ ", ""));
                                 Double userSendingBalanceValue = userSendingBalance[0];
                                 // Check if user send balance - amount is positive
                                 if (userSendingBalance[0] - amount >= 0) {
                                     // Start the transferring process
-                                    Double newBalance = (userSendingBalance[0] + amount);
-
-                                    firebase.child(receivingUser[0].getDataBaseId()).child("balance").setValue(newBalance);
+                                    Double newReceivingUserBalance = (receivingUser[0].getBalance() + amount);
+                                    Double newSendingUserBalance = userSendingBalance[0] - amount;
+                                    firebase.child(userSendingKey).child("balance").setValue(newSendingUserBalance);
+                                    firebase.child(receivingUser[0].getDataBaseId()).child("balance").setValue(newReceivingUserBalance);
                                     //Show user successful deposit
                                     Toast.makeText(TransferActivity.this, "transfer of " + amount + "to" + receivingUser[0].getEmail()+ " successful!"
                                             , Toast.LENGTH_SHORT).show();
 
                                     Log.v("Transfer:", "transfer of " + amount + "to" + receivingUser[0].getEmail()+ " successful!"); //log success to console
+                                    return;
                                 } else {
                                     Log.v("Transfer:", "insuficient amount to transfer");
                                 }
@@ -128,7 +130,6 @@ public class TransferActivity extends AppCompatActivity {
                     @Override
                     public void onCancelled (@NonNull DatabaseError error){
                     }
-
                 });
             };
         });
