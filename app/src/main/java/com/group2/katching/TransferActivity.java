@@ -118,7 +118,9 @@ public class TransferActivity extends AppCompatActivity {
                                     Log.v("Transfer:", "transfer of " + amount + "to" + receivingUser[0].getEmail()+ " successful!"); //log success to console
                                     return;
                                 } else {
-                                    Log.v("Transfer:", "insuficient amount to transfer");
+                                    Toast.makeText(TransferActivity.this, "insufficient amount to transfer"
+                                            , Toast.LENGTH_SHORT).show();
+                                    Log.v("Transfer:", "insufficient amount to transfer");
                                 }
                             } else
                                 Log.v("not found", "no match found");
