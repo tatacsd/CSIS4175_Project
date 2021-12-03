@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,18 +12,24 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.group2.katching.ui.login.LoginFragment;
+import com.google.firebase.auth.FirebaseUser;
+import com.group2.katching.ui.UserViewModel;
+
 
 public class MainActivity extends AppCompatActivity {
 
     // Field variables
     private Button signupFragmentBtn, loginFragmentBtn;
+    private UserViewModel userViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        userViewModel =new ViewModelProvider(this).get(UserViewModel.class);
 
         // Get toolbar items reference
         ImageView toolbar_arrowBack = findViewById(R.id.toolbar_backArrow);
@@ -52,8 +59,7 @@ public class MainActivity extends AppCompatActivity {
         loginFragmentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Inflate the fragment
-//                addFragmentToView(new LoginFragment());
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
             }
         });
     }
