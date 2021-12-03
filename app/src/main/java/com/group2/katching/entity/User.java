@@ -1,7 +1,9 @@
 package com.group2.katching.entity;
 
-public class User {
-    String dataBaseId;
+import java.io.Serializable;
+
+public class User implements Serializable {
+    private String dataBaseId;
     private String email;
     private String firstName;
     private String lastName;
