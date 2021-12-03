@@ -103,8 +103,9 @@ public class TransferActivity extends AppCompatActivity {
                                 // Get user sender amount
                                 Double amount = Double.valueOf(valueTransfer.getText().toString().replace("$ ", ""));
                                 Double userSendingBalanceValue = userSendingBalance[0];
-                                // Check if user send balance - amount is positive
-                                if (userSendingBalance[0] - amount >= 0) {
+
+                                boolean ableToTransfer = userSendingBalance[0] >= 0 &&  userSendingBalance[0] >= amount;
+                                if (ableToTransfer) {
                                     // Start the transferring process
                                     Double newReceivingUserBalance = (receivingUser[0].getBalance() + amount);
                                     Double newSendingUserBalance = userSendingBalance[0] - amount;
