@@ -92,37 +92,45 @@ public class TransferActivity extends AppCompatActivity {
                         for (DataSnapshot child : snapshot.getChildren()) {
                             String dataBaseId = String.valueOf(child.getKey());
                             String email = String.valueOf(child.child("email").getValue()).toLowerCase();
-                            Log.v("email",email);
+                            Log.v("email", email);
                             String balance = String.valueOf(child.child("balance").getValue()).toLowerCase();
                             if (receivingUserEmail.getText().toString().toLowerCase().equals(email)) {
                                 matchFound = true;
                                 receivingUser[0] = new User(dataBaseId, email, false, Double.valueOf(balance));
                             }
                         }
-                        if (matchFound){
+                        if (matchFound) {
                             Log.v("found", "match for " + receivingUser[0].getEmail() + "(id: " + receivingUser[0].getDataBaseId() + ")" + " found.");
-                            if(userSendingKey != null && receivingUser[0]. != null) {
+                            if (userSendingKey != null && receivingUser[0].getDataBaseId() != null) {
+                                // Get user sender amount
                                 Double amount = Double.valueOf(valueTransfer.getText().toString());
-                                Double newBalance = (userSendingBalance[0] + amount);
-                                Log.v("deposit:", "deposit of " + amount + " successful!"); //log success to console
-                                firebase.child(userReceivingKey).child("balance").setValue(newBalance);
-                                //Show user successful deposit
-                                Toast.makeText(TransferActivity.this, "Deposited $" + amount + " CAD"
-                                        ,Toast.LENGTH_SHORT).show();
-                            }
+                                Double userSendingBalanceValue = userSendingBalance[0];
+                                // Check if user send balance - amount is positive
+                                if (userSendingBalance[0] - amount >= 0) {
+                                    // Start the transferring process
+                                    Double newBalance = (userSendingBalance[0] + amount);
+
+                                    firebase.child(receivingUser[0].getDataBaseId()).child("balance").setValue(newBalance);
+                                    //Show user successful deposit
+                                    Toast.makeText(TransferActivity.this, "transfer of " + amount + "to" + receivingUser[0].getEmail()+ " successful!"
+                                            , Toast.LENGTH_SHORT).show();
+
+                                    Log.v("Transfer:", "transfer of " + amount + "to" + receivingUser[0].getEmail()+ " successful!"); //log success to console
+                                } else {
+                                    Log.v("Transfer:", "insuficient amount to transfer");
+                                }
+                            } else
+                                Log.v("not found", "no match found");
                         }
-                        else
-                            Log.v("not found", "no match found");
-                    }
 
+
+                    };
                     @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+                    public void onCancelled (@NonNull DatabaseError error){
                     }
-
-
 
                 });
-            }
+            };
         });
     }
 }
