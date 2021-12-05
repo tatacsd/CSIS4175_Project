@@ -23,9 +23,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.group2.katching.entity.Transaction;
 import com.group2.katching.entity.User;
 import com.group2.katching.ui.UserViewModel;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Locale;
 
 public class TransferActivity extends AppCompatActivity {
@@ -37,7 +40,8 @@ public class TransferActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transfer);
         mFirebase = FirebaseDatabase.getInstance();
-        DatabaseReference firebase = mFirebase.getReference("users");
+        DatabaseReference firebaseUsers = mFirebase.getReference("users");
+        DatabaseReference firebaseTransactions = mFirebase.getReference("transactions");
         final User[] receivingUser = new User[1];
 
         Button btnIncAmount = findViewById(R.id.increase_btn_transfer);
@@ -111,8 +115,15 @@ public class TransferActivity extends AppCompatActivity {
                                     // Start the transferring process
                                     Double newReceivingUserBalance = (receivingUser[0].getBalance() + amount);
                                     Double newSendingUserBalance = userSendingBalance[0] - amount;
-                                    firebase.child(userSendingKey).child("balance").setValue(newSendingUserBalance);
-                                    firebase.child(receivingUser[0].getDataBaseId()).child("balance").setValue(newReceivingUserBalance);
+
+                                    Transaction newTransaction = new Transaction(userSendingKey, receivingUser[0].getDataBaseId(), amount, "completed", LocalDateTime.now());
+                                    String transactionID = firebaseTransactions.push().getKey();
+                                    Log.e("Created a new TRANSACTION ID", transactionID);
+
+                                    firebaseTransactions.child(transactionID).setValue(newTransaction);
+
+                                    firebaseUsers.child(userSendingKey).child("balance").setValue(newSendingUserBalance);
+                                    firebaseUsers.child(receivingUser[0].getDataBaseId()).child("balance").setValue(newReceivingUserBalance);
                                     //Show user successful deposit
                                     Toast.makeText(TransferActivity.this, "transfer of " + amount + "to" + receivingUser[0].getEmail()+ " successful!"
                                             , Toast.LENGTH_SHORT).show();
