@@ -70,11 +70,13 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-
     private void submitForm() {
         // check if there is a user
-        String email = etUsername.getText().toString().trim();
-        String password = etPassword.getText().toString().trim();
+        // String email = etUsername.getText().toString().trim();
+        // String password = etPassword.getText().toString().trim();
+
+        String email = "oi@oi.ca";
+        String password = "123456";
 
         // validate them
         if (!checkEmail()) {
@@ -92,59 +94,49 @@ public class LoginActivity extends AppCompatActivity {
                         if (!task.isSuccessful())
                             Toast.makeText(LoginActivity.this, "failed to login", Toast.LENGTH_SHORT).show();
                         else {
-//                            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-//                            startActivity(intent);
-//                            finish();
-                            sendUserToRightScreen();
+                            Log.v("test", "TestLogin email and password exist");
+                            checkUserStatus();
                         }
 
                     }
                 });
     }
 
-    private void sendUserToRightScreen() {
-        // auth listener to login the user
-        authListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = auth.getCurrentUser();
-                // If there is no created send user to signup
-                if (user == null) {
-                    startActivity(new Intent(LoginActivity.this, SignupActivity.class));
-                    finish();
-                } else {
-                    // Launch the client/Admin activity
-                    String email = user.getEmail();
-
-                    // Check if the user is admin or client
-                    // Get user status
-                    mFirebaseDatabase = mFirebaseInstance.getReference("users");
-                    mFirebaseDatabase.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            for (DataSnapshot child : snapshot.getChildren()) {
-                                if (user.getEmail().equals(email)) {
-                                    // get user key
-                                    userId = String.valueOf(child.getKey());
-                                    // get the user status
-                                    boolean userStatus = Boolean.valueOf((Boolean) child.child("userStatus").getValue());
-                                    launchActivity(userStatus, user);
-                                }
-                            }
+    private void checkUserStatus() {
+        Log.v("test", "TestLogin inside sendUserToRightScreen");
+        // String email = etUsername.getText().toString().trim();
+        String email = "oi@oi.ca";
+        // Get the current user
+        FirebaseUser user = auth.getCurrentUser();
+        if (user != null) {
+            // Get the reference from firebase
+            mFirebaseDatabase = mFirebaseInstance.getReference("users");
+            // Get the user from the database
+            mFirebaseDatabase.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot child : dataSnapshot.getChildren()) {
+                        User user = child.getValue(User.class);
+                        String emailDataSnap = String.valueOf(child.child("email").getValue());
+                        boolean userStatusDataSnap = (boolean) child.child("userStatus").getValue();
+                        if (email.equals(emailDataSnap)) {
+                            launchActivity(userStatusDataSnap, user);
                         }
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                    }
 
-                        }
-                    });
                 }
-            }
-        };
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }
     }
 
-    private void launchActivity(boolean userStatus, FirebaseUser user) {
+    private void launchActivity(boolean userStatus, User user) {
         Intent intent;
-        if(userStatus){
+        if (userStatus) {
             intent = new Intent(LoginActivity.this, AdminDashboard.class);
         } else {
             // Launch the correct activity
@@ -157,7 +149,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean checkEmail() {
-        String email = etUsername.getText().toString().trim();
+        // String email = etUsername.getText().toString().trim();
+        String email = "oi@oi.ca";
         if (email.isEmpty() || !isEmailValid(email)) {
 
             Toast.makeText(LoginActivity.this, "wrong email or password", Toast.LENGTH_SHORT).show();
@@ -167,7 +160,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean checkPassword() {
-        String password = etPassword.getText().toString().trim();
+        // String password = etPassword.getText().toString().trim();
+        String password = "123456";
         if (password.isEmpty() || !isPasswordValid(password)) {
             Toast.makeText(getApplicationContext(), "Invalid password!", Toast.LENGTH_SHORT).show();
             requestFocus(etPassword);
