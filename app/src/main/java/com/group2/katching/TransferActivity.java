@@ -125,7 +125,7 @@ public class TransferActivity extends AppCompatActivity {
                                 }
                             } else
                                 Toast.makeText(TransferActivity.this, "no user found", Toast.LENGTH_SHORT).show();
-                                Log.v("not found", "no match found");
+                            Log.v("not found", "no match found");
                         }
 
 

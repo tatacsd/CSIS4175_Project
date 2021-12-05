@@ -1,49 +1,44 @@
 package com.group2.katching.entity;
 
-public class Transaction {
-    private int from;
-    private int to;
-    private String userStatus;
-    private float amount;
-    private String memo;
+import java.time.LocalDateTime;
+import java.util.Date;
 
-    public Transaction(int from, int to, String userStatus, float amount, String memo) {
+public class Transaction {
+    private String from;
+    private String to;
+    private Double amount;
+    private String memo;
+    private LocalDateTime date;
+
+    public Transaction(String from, String to, Double amount, String memo, LocalDateTime date) {
         this.from = from;
         this.to = to;
-        this.userStatus = userStatus;
         this.amount = amount;
         this.memo = memo;
+        this.date = date;
     }
 
-    public int getFrom() {
+    public String getFrom() {
         return from;
     }
 
-    public void setFrom(int from) {
+    public void setFrom(String from) {
         this.from = from;
     }
 
-    public int getTo() {
+    public String getTo() {
         return to;
     }
 
-    public void setTo(int to) {
+    public void setTo(String to) {
         this.to = to;
     }
 
-    public String getUserStatus() {
-        return userStatus;
-    }
-
-    public void setUserStatus(String userStatus) {
-        this.userStatus = userStatus;
-    }
-
-    public float getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(float amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 
@@ -53,6 +48,14 @@ public class Transaction {
 
     public void setMemo(String memo) {
         this.memo = memo;
+    }
+
+    public void setDate(LocalDateTime date) {
+        this.date = date;
+    }
+
+    public LocalDateTime getDate() {
+        return date;
     }
 
 }
