@@ -119,7 +119,9 @@ public class LoginActivity extends AppCompatActivity {
                         User user = child.getValue(User.class);
                         String emailDataSnap = String.valueOf(child.child("email").getValue());
                         boolean userStatusDataSnap = (boolean) child.child("userStatus").getValue();
+                        String userIdDataSnap = String.valueOf(child.child("dataBaseId").getValue());
                         if (email.equals(emailDataSnap)) {
+                            Log.v("test", "TestLogin databaseId: " + userIdDataSnap);
                             launchActivity(userStatusDataSnap, user);
                         }
                     }

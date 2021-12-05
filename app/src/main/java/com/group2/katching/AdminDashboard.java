@@ -8,7 +8,15 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class AdminDashboard extends AppCompatActivity {
+
+    // DATABASE VARIABLES
+    private DatabaseReference mFirebaseDatabase;
+    private FirebaseDatabase mFirebaseInstance;
+    private String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,5 +33,8 @@ public class AdminDashboard extends AppCompatActivity {
         // change to admin page toolbar color and icon
         toolbar_id.setBackgroundColor(ContextCompat.getColor(this, R.color.SecondaryGreen));
         toolbar_logo.setImageResource(R.drawable.logo_purple_app);
+
+
+
     }
 }
