@@ -7,7 +7,7 @@
 
 <!-- Create an HR-->
     <View
-        android:id="@+id/view"
+        android:id="@+id/hrView"
         android:layout_width="100dp"
         android:layout_height="3dp"
         android:layout_marginTop="5dp"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/admin_username"
+        android:id="@+id/client_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
@@ -26,13 +26,13 @@
         android:fontFamily="@font/rajdhani_medium"
         android:text="@string/admin_username_ex"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintEnd_toStartOf="@+id/adminDashboardBtn"
         app:layout_constraintHorizontal_bias="0.086"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view" />
+        app:layout_constraintTop_toBottomOf="@+id/hrView" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/adminDashboardBtn"
         android:layout_width="100dp"
         android:layout_height="42dp"
         android:layout_marginTop="4dp"
@@ -42,5 +42,5 @@
         android:text="Delete"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view" />
+        app:layout_constraintTop_toBottomOf="@+id/hrView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
