@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -18,6 +20,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.group2.katching.entity.User;
 
+import java.util.ArrayList;
+
 public class AdminDashboard extends AppCompatActivity {
 
     final private String TAG = AdminDashboard.class.getSimpleName();
@@ -26,9 +30,6 @@ public class AdminDashboard extends AppCompatActivity {
     private DatabaseReference mFirebaseDatabase;
     private FirebaseDatabase mFirebaseInstance;
     private String userId;
-
-    // List of users
-    private User[] usersList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,13 @@ public class AdminDashboard extends AppCompatActivity {
         toolbar_id.setBackgroundColor(ContextCompat.getColor(this, R.color.SecondaryGreen));
         toolbar_logo.setImageResource(R.drawable.logo_purple_app);
 
+        // Recycler view and adpter
+//        ArrayList<User> userArrayList = new ArrayList<User>();
+//        UserListAdapter adapter = new UserListAdapter(userArrayList, this, null);
+//        RecyclerView recyclerView = findViewById(R.id.recyclerview);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        recyclerView.setAdapter(adapter);
+
         // get all users from realtime database
         mFirebaseInstance = FirebaseDatabase.getInstance();
         mFirebaseDatabase = mFirebaseInstance.getReference("users");
@@ -54,21 +62,14 @@ public class AdminDashboard extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
+                int count = 0;
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
                     User user = child.getValue(User.class);
                     String emailSnapshot = user.getEmail();
                     Boolean userStatusSnapshot = user.isUserStatus();
+                    String userIdSnapshot = user.getDataBaseId();
                     if (userStatusSnapshot == false) {
-                        Log.v(TAG, "ADMIN DASHBOARD User: " + user.getEmail() + " is not active");
-
-                        // get recycler view and the adapter
-                        RecyclerView recyclerView = findViewById(R.id.recyclerview);
-                        final UserListAdapter adapter = new UserListAdapter(new UserListAdapter.UserDiff());
-                        // set the adapter to the recycleview
-                        recyclerView.setAdapter(adapter);
-                        // set the layout manager
-                        recyclerView.setLayoutManager(new LinearLayoutManager(AdminDashboard.this));
-
+                        // TODO: HERE WILL BE AVAILABLE ALL USERS THAT IS CLIENT
                     }
 
                 }

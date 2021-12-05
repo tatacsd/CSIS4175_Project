@@ -10,6 +10,7 @@
     <include layout="@layout/toolbar" />
 
     <TextView
+        android:id="@+id/userListTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/rajdhani_bold"
@@ -21,12 +22,20 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="20dp"
-            tools:listitem="@layout/admin_recyclerview_item" />
+            android:layout_height="wrap_content"
+            android:id="@+id/srollList"
+            android:orientation="vertical">
+
+
+        </LinearLayout>
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/recyclerview"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:padding="20dp"-->
+<!--            tools:listitem="@layout/admin_recyclerview_item" />-->
     </ScrollView>
 
 

@@ -72,11 +72,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private void submitForm() {
         // check if there is a user
-        // String email = etUsername.getText().toString().trim();
-        // String password = etPassword.getText().toString().trim();
-
-        String email = "oi@oi.ca";
-        String password = "123456";
+        String email = etUsername.getText().toString().trim();
+        String password = etPassword.getText().toString().trim();
 
         // validate them
         if (!checkEmail()) {
@@ -104,8 +101,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private void checkUserStatus() {
         Log.v("test", "TestLogin inside sendUserToRightScreen");
-        // String email = etUsername.getText().toString().trim();
-        String email = "oi@oi.ca";
+        String email = etUsername.getText().toString().trim();
+
         // Get the current user
         FirebaseUser user = auth.getCurrentUser();
         if (user != null) {
@@ -151,8 +148,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean checkEmail() {
-        // String email = etUsername.getText().toString().trim();
-        String email = "oi@oi.ca";
+        String email = etUsername.getText().toString().trim();
         if (email.isEmpty() || !isEmailValid(email)) {
 
             Toast.makeText(LoginActivity.this, "wrong email or password", Toast.LENGTH_SHORT).show();

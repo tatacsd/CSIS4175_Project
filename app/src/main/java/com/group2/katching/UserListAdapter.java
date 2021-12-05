@@ -1,5 +1,6 @@
 package com.group2.katching;
 
+import android.content.Context;
 import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.DiffUtil;
@@ -7,9 +8,17 @@ import androidx.recyclerview.widget.ListAdapter;
 
 import com.group2.katching.entity.User;
 
+import java.util.ArrayList;
+
 public class UserListAdapter extends ListAdapter<User, UserViewHolder> {
-    protected UserListAdapter(DiffUtil.ItemCallback<User> diffCallback) {
+
+    ArrayList<User> userArrayList = new ArrayList<>();
+    Context mContext;
+
+    protected UserListAdapter(ArrayList<User> arrayList, Context mContext, DiffUtil.ItemCallback<User> diffCallback) {
         super(diffCallback);
+        this.userArrayList = arrayList;
+        this.mContext = mContext;
     }
 
     // this method is called when you create the view holder on top of the activity
@@ -40,7 +49,7 @@ public class UserListAdapter extends ListAdapter<User, UserViewHolder> {
             // compare two obejcts and return true if they are the same
             boolean areContentsTheSame = false;
             if (oldItem.getEmail().equals(newItem.getEmail()))
-               areContentsTheSame = true;
+                areContentsTheSame = true;
             return areContentsTheSame;
         }
     }
