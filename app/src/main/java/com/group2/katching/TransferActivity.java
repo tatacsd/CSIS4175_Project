@@ -27,7 +27,9 @@ import com.group2.katching.entity.Transaction;
 import com.group2.katching.entity.User;
 import com.group2.katching.ui.UserViewModel;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -116,7 +118,9 @@ public class TransferActivity extends AppCompatActivity {
                                     Double newReceivingUserBalance = (receivingUser[0].getBalance() + amount);
                                     Double newSendingUserBalance = userSendingBalance[0] - amount;
 
-                                    Transaction newTransaction = new Transaction(userSendingKey, receivingUser[0].getDataBaseId(), amount, "completed", LocalDateTime.now());
+                                    SimpleDateFormat df = new SimpleDateFormat("EEE, MMM d, yyyy");
+
+                                    Transaction newTransaction = new Transaction(userSendingKey, receivingUser[0].getDataBaseId(), amount, "completed", df.format(Calendar.getInstance().getTime()));
                                     String transactionID = firebaseTransactions.push().getKey();
                                     Log.e("Created a new TRANSACTION ID", transactionID);
 

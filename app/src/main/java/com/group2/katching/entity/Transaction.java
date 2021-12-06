@@ -1,6 +1,5 @@
 package com.group2.katching.entity;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Transaction {
@@ -8,14 +7,22 @@ public class Transaction {
     private String to;
     private Double amount;
     private String memo;
-    private LocalDateTime date;
+    private String date;
 
-    public Transaction(String from, String to, Double amount, String memo, LocalDateTime date) {
+    public Transaction(String from, String to, Double amount, String memo, String date) {
         this.from = from;
         this.to = to;
         this.amount = amount;
         this.memo = memo;
         this.date = date;
+    }
+
+    public Transaction() {
+        this.from = null;
+        this.to = null;
+        this.amount = null;
+        this.memo = null;
+        this.date = null;
     }
 
     public String getFrom() {
@@ -50,11 +57,11 @@ public class Transaction {
         this.memo = memo;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public LocalDateTime getDate() {
+    public String getDate() {
         return date;
     }
 
