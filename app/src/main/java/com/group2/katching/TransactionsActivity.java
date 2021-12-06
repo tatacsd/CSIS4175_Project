@@ -1,48 +1,106 @@
 package com.group2.katching;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.group2.katching.entity.Transaction;
 
 public class TransactionsActivity extends AppCompatActivity {
+
+    RecyclerView recyclerView;
+    TransactionsAdapter adapter;
+
+    // DATABASE VARIABLES
+    private DatabaseReference mFirebaseDatabase;
+    private FirebaseDatabase mFirebaseInstance;
+    private String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transactions);
 
-        View toolbar_id = findViewById(R.id.toolbar_id);
-        ImageView toolbar_logo = findViewById(R.id.toolbar_logo);
-        ImageView arrow_back = findViewById(R.id.toolbar_backArrow);
+        recyclerView = (RecyclerView)findViewById(R.id.transactionsRecyclerview);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // Turn arrow back visible
-        arrow_back.setVisibility(View.VISIBLE);
+        FirebaseRecyclerOptions<Transaction> options = new FirebaseRecyclerOptions.Builder<Transaction>()
+                .setQuery(FirebaseDatabase.getInstance().getReference().child("transactions"), Transaction.class)
+                .build();
 
-        arrow_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                startActivity(intent);
-            }
-        });
-        // change to admin page toolbar color and icon
-        toolbar_id.setBackgroundColor(ContextCompat.getColor(this, R.color.PrimaryPurple));
-        toolbar_logo.setImageResource(R.drawable.logo_green_app);
 
-        displayFragment(new YourAccountFragment(), R.id.accountFragmentTransaction);
+        adapter = new TransactionsAdapter(options);
+        recyclerView.setAdapter(adapter);
+
     }
 
-    // Method to display a fragment
-    private void displayFragment(Fragment fragment, int containerViewId ) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(containerViewId, fragment).addToBackStack(null).commit();
+    @Override
+    protected void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        adapter.stopListening();
+    }
+
+
+
+}
+
+class TransactionsAdapter extends FirebaseRecyclerAdapter<Transaction, TransactionsAdapter.TransactionsViewHolder> {
+
+    public TransactionsAdapter(@NonNull FirebaseRecyclerOptions<Transaction> options) {
+        super(options);
+    }
+
+    @Override
+    protected void onBindViewHolder(@NonNull TransactionsViewHolder holder, int position, @NonNull Transaction model) {
+
+        holder.dateTxt.setText(model.getDate());
+        holder.descriptionTxt.setText("From: " + model.getFrom() + "\n" +
+                "To: " + model.getTo());
+        holder.amountTxt.setText("$" + model.getAmount());
+        holder.currencyTxt.setText("CAD");
+    }
+
+    @NonNull
+    @Override
+    public TransactionsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.transaction_recycleview_item, parent, false);
+        return new TransactionsViewHolder(view);
+    }
+
+    class TransactionsViewHolder extends RecyclerView.ViewHolder
+    {
+        TextView dateTxt, descriptionTxt, amountTxt, currencyTxt;
+        public TransactionsViewHolder(@NonNull View itemView) {
+            super(itemView);
+            dateTxt = (TextView) itemView.findViewById(R.id.recycle_item_date);
+            descriptionTxt = (TextView) itemView.findViewById(R.id.recycle_item_transaction);
+            amountTxt = (TextView) itemView.findViewById(R.id.recycle_item_amount);
+            currencyTxt = (TextView) itemView.findViewById(R.id.recycle_item_currency);
+        }
     }
 }
+
+
+
