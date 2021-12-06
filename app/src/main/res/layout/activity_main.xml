@@ -64,9 +64,9 @@
         android:text="@string/txtAppNameMainActivity"
         android:textColor="@color/SecondaryGreen"
         android:textSize="45sp"
-        app:layout_constraintBottom_toTopOf="@+id/login_btn_main"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/tv_main"
+        app:layout_constraintEnd_toEndOf="@+id/tv_main"
+        app:layout_constraintStart_toStartOf="@+id/tv_main"
+        app:layout_constraintTop_toTopOf="@+id/tv_main" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
