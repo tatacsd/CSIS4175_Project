@@ -3,6 +3,8 @@ package com.group2.katching;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -37,11 +39,11 @@ public class AdminDashboard extends AppCompatActivity {
     UserListAdapter adapter;
     ArrayList<User> userArrayList;
 
-
     // DATABASE VARIABLES
     private DatabaseReference mFirebaseDatabase;
     private FirebaseDatabase mFirebaseInstance;
     private String userId;
+    private boolean isMenuDisplayed = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,12 +57,40 @@ public class AdminDashboard extends AppCompatActivity {
         TextView toolbar_appName = findViewById(R.id.toolbar_app_name);
         ImageView toolbar_menu = findViewById(R.id.toolbar_menu);
 
+        // Turn sandwich menu visible
+        toolbar_menu.setVisibility(View.VISIBLE);
+
+        // when the user clicks display a menu with logout btn
+        toolbar_menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.v(TAG, "MENU CLICK");
+                if (!isMenuDisplayed) {
+                    // Inflate a layout with the logout option
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    // load the fragment on top of the AdminDashboard
+                    fragmentTransaction.add(R.id.logoutFragmentContainerView, new MenuLogoutFragment())
+                            .addToBackStack(null).commit();
+                    isMenuDisplayed = true;
+                } else {
+                    // Remove fragment
+                    FragmentManager fragmentManager = getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.remove(fragmentManager.findFragmentById(R.id.logoutFragmentContainerView))
+                            .commit();
+                    isMenuDisplayed = false;
+
+                }
+
+            }
+        });
+
         // change to admin page toolbar color and icon
         toolbar_id.setBackgroundColor(ContextCompat.getColor(this, R.color.SecondaryGreen));
         toolbar_logo.setImageResource(R.drawable.logo_purple_app);
 
-
-//         get all users from realtime database
+        // get all users from realtime database
         mFirebaseInstance = FirebaseDatabase.getInstance();
         mFirebaseDatabase = mFirebaseInstance.getReference("users");
 
@@ -72,8 +102,6 @@ public class AdminDashboard extends AppCompatActivity {
         userArrayList = new ArrayList<User>();
         adapter = new UserListAdapter(this, userArrayList);
         recyclerView.setAdapter(adapter);
-
-
 
         // Listener from data
         mFirebaseDatabase.addValueEventListener(new ValueEventListener() {
