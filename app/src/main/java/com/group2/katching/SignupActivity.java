@@ -154,9 +154,10 @@ public class SignupActivity extends AppCompatActivity {
                 for(DataSnapshot child : snapshot.getChildren()) {
                     String emailDatabase = String.valueOf(child.child("email").getValue()).toLowerCase();
                     if(emailDatabase.equals(email)) {
-                        requestFocus(signupInputEmail);
                         status[0] = false;
-                        Log.v(TAG,"Tested" + emailDatabase + "-> " + email + status[0]);
+                        Toast.makeText(getApplicationContext(), "This user already exists!", Toast.LENGTH_SHORT).show();
+                        requestFocus(signupInputEmail);
+                        Log.v(TAG,"Tested " + emailDatabase + " -> " + email + " status = " + status[0]);
                     }
                 }
             }
