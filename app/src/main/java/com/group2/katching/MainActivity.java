@@ -1,6 +1,7 @@
 package com.group2.katching;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -38,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
         TextView toolbar_appName = findViewById(R.id.toolbar_app_name);
         ImageView toolbar_menu = findViewById(R.id.toolbar_menu);
 
+        // change to admin page toolbar color and icon
+        toolbar_id.setBackgroundColor(ContextCompat.getColor(this, R.color.SecondaryGreen));
+        toolbar_logo.setImageResource(R.drawable.logo_purple_app);
 
         // Create a button reference
         signupFragmentBtn = findViewById(R.id.signup_btn_main);

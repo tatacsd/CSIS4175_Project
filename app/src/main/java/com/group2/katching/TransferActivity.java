@@ -46,6 +46,20 @@ public class TransferActivity extends AppCompatActivity {
 
         View toolbar_id = findViewById(R.id.toolbar_id);
         ImageView toolbar_logo = findViewById(R.id.toolbar_logo);
+
+        ImageView arrow_back = findViewById(R.id.toolbar_backArrow);
+
+        // Turn arrow back visible
+        arrow_back.setVisibility(View.VISIBLE);
+
+        arrow_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
         // change to admin page toolbar color and icon
         toolbar_id.setBackgroundColor(ContextCompat.getColor(this, R.color.PrimaryPurple));
         toolbar_logo.setImageResource(R.drawable.logo_green_app);
