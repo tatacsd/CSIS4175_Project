@@ -85,6 +85,7 @@ public class AdminDashboard extends AppCompatActivity {
                 for (DataSnapshot child : dataSnapshot.getChildren()) {
                     // create a user to add in the list
                     User userTemp = child.getValue(User.class);
+                    userTemp.setDataSnapshot(child);
 
                     // Save all user into the ArrayList
                     userArrayList.add(userTemp);

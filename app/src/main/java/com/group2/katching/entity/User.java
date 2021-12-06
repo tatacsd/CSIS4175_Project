@@ -1,5 +1,7 @@
 package com.group2.katching.entity;
 
+import com.google.firebase.database.DataSnapshot;
+
 import java.io.Serializable;
 
 public class User implements Serializable {
@@ -9,6 +11,7 @@ public class User implements Serializable {
     private String lastName;
     private boolean userStatus;
     private double balance;
+    private DataSnapshot dataSnapshot;
 
     public User (){}
 
@@ -25,6 +28,7 @@ public class User implements Serializable {
     public String getLastName() {return lastName; }
     public boolean isUserStatus() { return userStatus; }
     public double getBalance() { return balance; }
+    public DataSnapshot getDataSnapshot() { return dataSnapshot; }
 
     public void setDataBaseId(String dataBaseId) {this.dataBaseId = dataBaseId;}
     public void setEmail(String email) { this.email = email; }
@@ -32,4 +36,5 @@ public class User implements Serializable {
     public void setLastName(String lastName) { this.lastName = lastName; }
     public void setUserStatus(boolean userStatus) { this.userStatus = userStatus; }
     public void setBalance(double balance) {this.balance = balance;}
+    public void setDataSnapshot(DataSnapshot dataSnapshot) {this.dataSnapshot = dataSnapshot;}
 }
