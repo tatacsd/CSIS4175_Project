@@ -13,16 +13,14 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.firebase.ui.database.FirebaseRecyclerOptions;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.group2.katching.adminrecyclerview.UserListAdapter;
 import com.group2.katching.entity.Transaction;
-import com.group2.katching.entity.User;
 import com.group2.katching.transactionsrecyclerview.TransactionsAdapter;
 
 import java.util.ArrayList;
@@ -38,10 +36,6 @@ public class TransactionsActivity extends AppCompatActivity {
     private DatabaseReference mFirebaseDatabase;
     private FirebaseDatabase mFirebaseInstance;
     private FirebaseAuth auth;
-
-    //Retrieve data from deposit fragment intent
-//    Intent intent = getIntent();
-//    String email = intent.getStringExtra("email");
 
 
     private boolean isMenuDisplayed = false;
