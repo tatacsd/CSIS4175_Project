@@ -78,7 +78,8 @@ public class TransferActivity extends AppCompatActivity {
         // Retrieve data from transfer fragment intent
         Bundle intentData = getIntent().getExtras();
         String userSendingKey = intentData.getString("key");
-        double[] userSendingBalance = new double[] { intentData.getDouble("balance") };
+        String senderEmail = intentData.getString("email");
+        double[] userSendingBalance = new double[]{intentData.getDouble("balance")};
 
         final Double[] transferValue = { 0.00 };
 
@@ -144,9 +145,7 @@ public class TransferActivity extends AppCompatActivity {
 
                                     SimpleDateFormat df = new SimpleDateFormat("EEE, MMM d, yyyy");
 
-                                    Transaction newTransaction = new Transaction(userSendingKey,
-                                            receivingUser[0].getDataBaseId(), amount, "completed",
-                                            df.format(Calendar.getInstance().getTime()));
+                                    Transaction newTransaction = new Transaction(senderEmail, receivingUser[0].getEmail(), amount, "completed", df.format(Calendar.getInstance().getTime()));
                                     String transactionID = firebaseTransactions.push().getKey();
                                     Log.e("Created a new TRANSACTION ID", transactionID);
 

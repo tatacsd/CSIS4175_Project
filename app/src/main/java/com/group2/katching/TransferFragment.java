@@ -59,6 +59,7 @@ public class TransferFragment extends Fragment implements View.OnClickListener{
     public void onClick(View view) {
         final String[] dbKey = new String[1];
         final Double[] currentBalance = new Double[1];
+        final String[] senderEmail = new String[1];
 
         UserViewModel viewModel = new ViewModelProvider(getActivity()).get(UserViewModel.class);
         viewModel.userData.observeForever(new Observer<User>() {
@@ -67,12 +68,14 @@ public class TransferFragment extends Fragment implements View.OnClickListener{
             public void onChanged(User s) {
                 dbKey[0] = s.getDataBaseId();
                 currentBalance[0] = Double.valueOf(s.getBalance());
+                senderEmail[0] = s.getEmail();
             }
         });
 
         Intent intent = new Intent(getActivity(), TransferActivity.class);
         intent.putExtra("key", dbKey[0]);
         intent.putExtra("balance", currentBalance[0]);
+        intent.putExtra("email", senderEmail[0]);
         startActivity(intent);
     }
 }
