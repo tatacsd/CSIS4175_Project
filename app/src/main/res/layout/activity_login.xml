@@ -8,6 +8,8 @@
     android:background="@color/SecondaryGreen"
     >
 
+    <include layout="@layout/toolbar" />
+
     <TextView
         android:id="@+id/txtPasswordTag"
         android:layout_width="wrap_content"

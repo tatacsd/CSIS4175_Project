@@ -2,6 +2,7 @@ package com.group2.katching;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -10,6 +11,9 @@ import androidx.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -42,6 +46,12 @@ public class HomeActivity extends AppCompatActivity {
         displayFragment(new DepositFragment(),R.id.depositFragment);
         displayFragment(new TransferFragment(),R.id.transferFragment);
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
+        View toolbar_id = findViewById(R.id.toolbar_id);
+        ImageView toolbar_logo = findViewById(R.id.toolbar_logo);
+        // change to admin page toolbar color and icon
+        toolbar_id.setBackgroundColor(ContextCompat.getColor(this, R.color.PrimaryPurple));
+        toolbar_logo.setImageResource(R.drawable.logo_green_app);
+
 
         authListener = new FirebaseAuth.AuthStateListener() {
             @Override

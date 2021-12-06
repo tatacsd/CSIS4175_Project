@@ -2,6 +2,7 @@ package com.group2.katching;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -13,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
@@ -41,6 +43,13 @@ public class TransferActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transfer);
+
+        View toolbar_id = findViewById(R.id.toolbar_id);
+        ImageView toolbar_logo = findViewById(R.id.toolbar_logo);
+        // change to admin page toolbar color and icon
+        toolbar_id.setBackgroundColor(ContextCompat.getColor(this, R.color.PrimaryPurple));
+        toolbar_logo.setImageResource(R.drawable.logo_green_app);
+
         mFirebase = FirebaseDatabase.getInstance();
         DatabaseReference firebaseUsers = mFirebase.getReference("users");
         DatabaseReference firebaseTransactions = mFirebase.getReference("transactions");

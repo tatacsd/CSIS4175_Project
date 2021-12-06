@@ -1,12 +1,14 @@
 package com.group2.katching;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +23,12 @@ public class DepositActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_deposit);
+        View toolbar_id = findViewById(R.id.toolbar_id);
+        ImageView toolbar_logo = findViewById(R.id.toolbar_logo);
+        // change to admin page toolbar color and icon
+        toolbar_id.setBackgroundColor(ContextCompat.getColor(this, R.color.PrimaryPurple));
+        toolbar_logo.setImageResource(R.drawable.logo_green_app);
+
         mFirebase = FirebaseDatabase.getInstance();
         DatabaseReference firebase = mFirebase.getReference("users");
 
