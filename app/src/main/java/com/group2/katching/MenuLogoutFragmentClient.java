@@ -5,23 +5,17 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link MenuLogoutFragment#newInstance} factory method to
+ * Use the {@link MenuLogoutFragmentClient#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MenuLogoutFragment extends Fragment {
+public class MenuLogoutFragmentClient extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -32,7 +26,7 @@ public class MenuLogoutFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public MenuLogoutFragment() {
+    public MenuLogoutFragmentClient() {
         // Required empty public constructor
     }
 
@@ -42,11 +36,11 @@ public class MenuLogoutFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment MenuLogoutFragment.
+     * @return A new instance of fragment MenuLogoutFragmentClient.
      */
     // TODO: Rename and change types and number of parameters
-    public static MenuLogoutFragment newInstance(String param1, String param2) {
-        MenuLogoutFragment fragment = new MenuLogoutFragment();
+    public static MenuLogoutFragmentClient newInstance(String param1, String param2) {
+        MenuLogoutFragmentClient fragment = new MenuLogoutFragmentClient();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,27 +55,23 @@ public class MenuLogoutFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
-
+            Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_menu_logout,
+        View view = inflater.inflate(R.layout.fragment_menu_logout_client,
                 container, false);
-        TextView logoutTxtView = view.findViewById(R.id.logoutTxtViewAdmin);
+
+        // Get the reference
+        TextView logoutTxtView = view.findViewById(R.id.logoutTxtViewClient);
+
+        // Set the listener
         logoutTxtView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Log.v("logou", "logout fragment inside listener");
-                // Logout from user auth
-                FirebaseAuth.getInstance().signOut();
-                // return user to login activity
-                Intent intent = new Intent(getActivity(), LoginActivity.class);
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), LogoutActivity.class);
                 startActivity(intent);
             }
         });

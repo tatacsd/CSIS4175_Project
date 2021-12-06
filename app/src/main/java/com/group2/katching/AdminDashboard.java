@@ -1,6 +1,5 @@
 package com.group2.katching;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
@@ -10,26 +9,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.group2.katching.adminrecyclerview.UserListAdapter;
-import com.group2.katching.entity.Transaction;
 import com.group2.katching.entity.User;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class AdminDashboard extends AppCompatActivity {
@@ -70,7 +61,7 @@ public class AdminDashboard extends AppCompatActivity {
                     FragmentManager fragmentManager = getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     // load the fragment on top of the AdminDashboard
-                    fragmentTransaction.add(R.id.logoutFragmentContainerView, new MenuLogoutFragment())
+                    fragmentTransaction.add(R.id.logoutFragmentContainerView, new MenuLogoutFragmentAdmin())
                             .addToBackStack(null).commit();
                     isMenuDisplayed = true;
                 } else {

@@ -8,12 +8,14 @@
         <entry key="..\:/WORK/CSIS4175_Project/Katching/app/src/main/res/drawable/button_green_pressed.xml" value="0.20572916666666666" />
         <entry key="..\:/WORK/CSIS4175_Project/Katching/app/src/main/res/layout/activity_main.xml" value="0.176" />
         <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/activity_admin_dashboard.xml" value="0.24375" />
-        <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/activity_home.xml" value="0.1" />
+        <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/activity_home.xml" value="0.264" />
         <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/activity_login.xml" value="0.18981481481481483" />
+        <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/activity_logout.xml" value="0.18981481481481483" />
         <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/activity_main.xml" value="0.2265625" />
         <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/activity_signup.xml" value="0.1" />
         <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/admin_recyclerview_item.xml" value="0.11927083333333334" />
         <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/fragment_menu_logout.xml" value="0.264" />
+        <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/fragment_menu_logout_client.xml" value="0.18981481481481483" />
         <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/menu_logout_admin.xml" value="0.1" />
         <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/toolbar.xml" value="0.136" />
         <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/menu/main_menu.xml" value="0.264" />
