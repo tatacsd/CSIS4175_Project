@@ -75,6 +75,8 @@ class TransactionsAdapter extends FirebaseRecyclerAdapter<Transaction, Transacti
     @Override
     protected void onBindViewHolder(@NonNull TransactionsViewHolder holder, int position, @NonNull Transaction model) {
 
+
+
         holder.dateTxt.setText(model.getDate());
         holder.descriptionTxt.setText("From: " + model.getFrom() + "\n" +
                 "To: " + model.getTo());
