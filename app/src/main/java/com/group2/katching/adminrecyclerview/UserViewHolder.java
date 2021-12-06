@@ -1,4 +1,4 @@
-package com.group2.katching;
+package com.group2.katching.adminrecyclerview;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,27 +8,27 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.group2.katching.R;
+
 public class UserViewHolder extends RecyclerView.ViewHolder {
     // Instantiate a what is inside the recycle_item
-    private final View hrView;
+    //private final View hrView;
     private final TextView userEmailView;
-    private final Button deleteBtnView;
+    //private final Button deleteBtnView;
 
     // constructor
     public UserViewHolder(View itemView) {
         super(itemView);
         // get the textView for the recycler view item
-        hrView = itemView.findViewById(R.id.hrView);
+        //hrView = itemView.findViewById(R.id.hrView);
         userEmailView = itemView.findViewById(R.id.client_username);
-        deleteBtnView = itemView.findViewById(R.id.adminDashboardBtn);
+        //deleteBtnView = itemView.findViewById(R.id.adminDashboardBtn);
     }
 
     // we gonna need two methods:
     // bind to set the text of the texview
     public void bind(String text) {
         userEmailView.setText(text);
-        // TODO: bind delete user btn
-
     }
 
     // static method ti get the access of the parent holding the list to create the
