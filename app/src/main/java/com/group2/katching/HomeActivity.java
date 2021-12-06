@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -33,12 +34,15 @@ public class HomeActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener authListener;
     private FirebaseAuth auth;
     FirebaseDatabase mFirebase;
+    FloatingActionButton transactionsBtn;
     private boolean isMenuDisplayed = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        transactionsBtn = findViewById(R.id.floatingActionButton);
 
         auth = FirebaseAuth.getInstance();
 
@@ -79,6 +83,18 @@ public class HomeActivity extends AppCompatActivity {
         // change to admin page toolbar color and icon
         toolbar_id.setBackgroundColor(ContextCompat.getColor(this, R.color.PrimaryPurple));
         toolbar_logo.setImageResource(R.drawable.logo_green_app);
+
+        transactionsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeActivity.this, TransactionsActivity.class);
+                intent.putExtra("id", userViewModel.getUserData().getDataBaseId());
+                startActivity(intent);
+            }
+        });
+
+
+
 
         authListener = new FirebaseAuth.AuthStateListener() {
             @Override
