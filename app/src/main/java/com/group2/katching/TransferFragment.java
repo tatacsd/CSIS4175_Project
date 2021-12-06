@@ -62,7 +62,7 @@ public class TransferFragment extends Fragment implements View.OnClickListener{
         final String[] senderEmail = new String[1];
 
         UserViewModel viewModel = new ViewModelProvider(getActivity()).get(UserViewModel.class);
-        viewModel.userData.observeForever(new Observer<User>() {
+        viewModel.userData.observeForever(new Observer<User>() { // sets view model as observer
 
             @Override
             public void onChanged(User s) {

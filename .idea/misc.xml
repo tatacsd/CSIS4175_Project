@@ -3,30 +3,25 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Code/4175/CSIS4175_Project/app/src/main/res/layout/activity_signup.xml" value="0.1875" />
+        <entry key="..\:/Code/4175/CSIS4175_Project/app/src/main/res/layout/activity_transfer.xml" value="0.1875" />
+        <entry key="..\:/Code/4175/CSIS4175_Project/app/src/main/res/layout/fragment_menu_logout_client.xml" value="0.1875" />
+        <entry key="..\:/Code/4175/CSIS4175_Project/app/src/main/res/layout/fragment_transfer.xml" value="0.1875" />
+        <entry key="..\:/Code/4175/CSIS4175_Project/app/src/main/res/layout/transaction_recycleview_item.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/luanc/OneDrive/Documentos/Academic/DOUGLAS/Fall-2021/CSIS-4175-001_35589_202130 Mobile App Development II/Assignments/Project/CSIS4175_Project/Katching/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/luanc/OneDrive/Documentos/Academic/DOUGLAS/Fall-2021/CSIS-4175-001_35589_202130 Mobile App Development II/Assignments/Project/CSIS4175_Project/app/src/main/res/layout/activity_admin_dashboard.xml" value="0.25" />
-        <entry key="..\:/Users/luanc/OneDrive/Documentos/Academic/DOUGLAS/Fall-2021/CSIS-4175-001_35589_202130 Mobile App Development II/Assignments/Project/CSIS4175_Project/app/src/main/res/layout/activity_home.xml" value="0.2" />
-        <entry key="..\:/Users/luanc/OneDrive/Documentos/Academic/DOUGLAS/Fall-2021/CSIS-4175-001_35589_202130 Mobile App Development II/Assignments/Project/CSIS4175_Project/app/src/main/res/layout/activity_login.xml" value="0.25" />
-        <entry key="..\:/Users/luanc/OneDrive/Documentos/Academic/DOUGLAS/Fall-2021/CSIS-4175-001_35589_202130 Mobile App Development II/Assignments/Project/CSIS4175_Project/app/src/main/res/layout/activity_logout.xml" value="0.25" />
-        <entry key="..\:/Users/luanc/OneDrive/Documentos/Academic/DOUGLAS/Fall-2021/CSIS-4175-001_35589_202130 Mobile App Development II/Assignments/Project/CSIS4175_Project/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/luanc/OneDrive/Documentos/Academic/DOUGLAS/Fall-2021/CSIS-4175-001_35589_202130 Mobile App Development II/Assignments/Project/CSIS4175_Project/app/src/main/res/layout/activity_signup.xml" value="0.25" />
-        <entry key="..\:/Users/luanc/OneDrive/Documentos/Academic/DOUGLAS/Fall-2021/CSIS-4175-001_35589_202130 Mobile App Development II/Assignments/Project/CSIS4175_Project/app/src/main/res/layout/activity_transactions.xml" value="0.2" />
-        <entry key="..\:/Users/luanc/OneDrive/Documentos/Academic/DOUGLAS/Fall-2021/CSIS-4175-001_35589_202130 Mobile App Development II/Assignments/Project/CSIS4175_Project/app/src/main/res/layout/activity_transfer.xml" value="0.25" />
-        <entry key="..\:/Users/luanc/OneDrive/Documentos/Academic/DOUGLAS/Fall-2021/CSIS-4175-001_35589_202130 Mobile App Development II/Assignments/Project/CSIS4175_Project/app/src/main/res/layout/admin_recyclerview_item.xml" value="0.2" />
-        <entry key="..\:/Users/luanc/OneDrive/Documentos/Academic/DOUGLAS/Fall-2021/CSIS-4175-001_35589_202130 Mobile App Development II/Assignments/Project/CSIS4175_Project/app/src/main/res/layout/fragment_deposit_shortcut.xml" value="0.25" />
-        <entry key="..\:/Users/luanc/OneDrive/Documentos/Academic/DOUGLAS/Fall-2021/CSIS-4175-001_35589_202130 Mobile App Development II/Assignments/Project/CSIS4175_Project/app/src/main/res/layout/fragment_transfer.xml" value="0.25" />
-        <entry key="..\:/Users/luanc/OneDrive/Documentos/Academic/DOUGLAS/Fall-2021/CSIS-4175-001_35589_202130 Mobile App Development II/Assignments/Project/CSIS4175_Project/app/src/main/res/layout/fragment_your_account.xml" value="0.1537037037037037" />
-        <entry key="..\:/Users/luanc/OneDrive/Documentos/Academic/DOUGLAS/Fall-2021/CSIS-4175-001_35589_202130 Mobile App Development II/Assignments/Project/CSIS4175_Project/app/src/main/res/layout/menu_logout_admin.xml" value="0.25" />
-        <entry key="..\:/Users/luanc/OneDrive/Documentos/Academic/DOUGLAS/Fall-2021/CSIS-4175-001_35589_202130 Mobile App Development II/Assignments/Project/CSIS4175_Project/app/src/main/res/layout/toolbar.xml" value="0.2037037037037037" />
-        <entry key="..\:/Users/luanc/OneDrive/Documentos/Academic/DOUGLAS/Fall-2021/CSIS-4175-001_35589_202130 Mobile App Development II/Assignments/Project/CSIS4175_Project/app/src/main/res/layout/transaction_recycleview_item.xml" value="0.2" />
         <entry key="..\:/WORK/CSIS4175_Project/Katching/app/src/main/res/drawable/button_green_hover.xml" value="0.20572916666666666" />
         <entry key="..\:/WORK/CSIS4175_Project/Katching/app/src/main/res/drawable/button_green_pressed.xml" value="0.20572916666666666" />
         <entry key="..\:/WORK/CSIS4175_Project/Katching/app/src/main/res/layout/activity_main.xml" value="0.176" />
         <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/activity_admin_dashboard.xml" value="0.24375" />
+        <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/activity_home.xml" value="0.1" />
+        <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/activity_login.xml" value="0.18981481481481483" />
         <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/activity_main.xml" value="0.2265625" />
         <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/activity_signup.xml" value="0.1" />
-        <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/activity_transactions.xml" value="0.2" />
         <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/admin_recyclerview_item.xml" value="0.11927083333333334" />
+        <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/fragment_menu_logout.xml" value="0.264" />
+        <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/menu_logout_admin.xml" value="0.1" />
+        <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/layout/toolbar.xml" value="0.136" />
+        <entry key="..\:/WORK/CSIS4175_Project/app/src/main/res/menu/main_menu.xml" value="0.264" />
         <entry key="app/src/main/res/layout/activity_deposit.xml" value="0.16770833333333332" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.30512820512820515" />
