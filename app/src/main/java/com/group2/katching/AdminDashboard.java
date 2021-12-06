@@ -56,18 +56,16 @@ public class AdminDashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.v(TAG, "MENU CLICK");
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 if (!isMenuDisplayed) {
                     // Inflate a layout with the logout option
-                    FragmentManager fragmentManager = getSupportFragmentManager();
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     // load the fragment on top of the AdminDashboard
                     fragmentTransaction.add(R.id.logoutFragmentContainerView, new MenuLogoutFragmentAdmin())
                             .addToBackStack(null).commit();
                     isMenuDisplayed = true;
                 } else {
                     // Remove fragment
-                    FragmentManager fragmentManager = getSupportFragmentManager();
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.remove(fragmentManager.findFragmentById(R.id.logoutFragmentContainerView))
                             .commit();
                     isMenuDisplayed = false;
@@ -119,6 +117,5 @@ public class AdminDashboard extends AppCompatActivity {
                 Log.v(TAG, "Failed to read value.", error.toException());
             }
         });
-
     }
 }
