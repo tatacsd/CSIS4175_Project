@@ -61,7 +61,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/rajdhani_bold"
-        android:text="Katching"
+        android:text="@string/txtAppNameMainActivity"
         android:textColor="@color/SecondaryGreen"
         android:textSize="45sp"
         app:layout_constraintBottom_toTopOf="@+id/login_btn_main"
