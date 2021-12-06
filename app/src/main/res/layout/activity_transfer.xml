@@ -99,7 +99,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="329dp"
-            android:layout_height="48dp"
+            android:layout_height="55dp"
             android:background="@drawable/round_background"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

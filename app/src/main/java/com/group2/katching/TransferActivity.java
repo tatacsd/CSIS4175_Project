@@ -75,12 +75,12 @@ public class TransferActivity extends AppCompatActivity {
         TextView valueTransfer = findViewById(R.id.tv_value_transfer);
         EditText receivingUserEmail = findViewById(R.id.et_userTransfer);
 
-        //Retrieve data from transfer fragment intent
+        // Retrieve data from transfer fragment intent
         Bundle intentData = getIntent().getExtras();
         String userSendingKey = intentData.getString("key");
-        double[] userSendingBalance = new double[]{intentData.getDouble("balance")};
+        double[] userSendingBalance = new double[] { intentData.getDouble("balance") };
 
-        final Double[] transferValue = {0.00};
+        final Double[] transferValue = { 0.00 };
 
         btnDecAmount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,7 +89,8 @@ public class TransferActivity extends AppCompatActivity {
                     Toast.makeText(TransferActivity.this, "Negative values not accepted", Toast.LENGTH_SHORT).show();
                 }
                 if (transferValue[0] == 0) {
-                    Toast.makeText(TransferActivity.this, "The value for transference should be bigger than zero", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TransferActivity.this, "The value for transference should be bigger than zero",
+                            Toast.LENGTH_SHORT).show();
                 } else {
                     transferValue[0] -= 0.50;
                     valueTransfer.setText(transferValue[0].toString());
@@ -105,11 +106,10 @@ public class TransferActivity extends AppCompatActivity {
             }
         });
 
-
         btnTransfer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //only validate if key has been properly sent in intent.
+                // only validate if key has been properly sent in intent.
 
                 // Checking user receiving email with database children
                 mFirebase = FirebaseDatabase.getInstance();
@@ -130,7 +130,8 @@ public class TransferActivity extends AppCompatActivity {
                             }
                         }
                         if (matchFound) {
-                            Log.v("found", "match for " + receivingUser[0].getEmail() + "(id: " + receivingUser[0].getDataBaseId() + ")" + " found.");
+                            Log.v("found", "match for " + receivingUser[0].getEmail() + "(id: "
+                                    + receivingUser[0].getDataBaseId() + ")" + " found.");
                             if (userSendingKey != null && receivingUser[0].getDataBaseId() != null) {
                                 // Get user sender amount
                                 Double amount = Double.valueOf(valueTransfer.getText().toString().replace("$ ", ""));
@@ -143,22 +144,28 @@ public class TransferActivity extends AppCompatActivity {
 
                                     SimpleDateFormat df = new SimpleDateFormat("EEE, MMM d, yyyy");
 
-                                    Transaction newTransaction = new Transaction(userSendingKey, receivingUser[0].getDataBaseId(), amount, "completed", df.format(Calendar.getInstance().getTime()));
+                                    Transaction newTransaction = new Transaction(userSendingKey,
+                                            receivingUser[0].getDataBaseId(), amount, "completed",
+                                            df.format(Calendar.getInstance().getTime()));
                                     String transactionID = firebaseTransactions.push().getKey();
                                     Log.e("Created a new TRANSACTION ID", transactionID);
 
                                     firebaseTransactions.child(transactionID).setValue(newTransaction);
 
-                                    firebaseUsers.child(userSendingKey).child("balance").setValue(newSendingUserBalance);
-                                    firebaseUsers.child(receivingUser[0].getDataBaseId()).child("balance").setValue(newReceivingUserBalance);
-                                    //Show user successful deposit
-                                    Toast.makeText(TransferActivity.this, "transfer of " + amount + "to" + receivingUser[0].getEmail()+ " successful!"
-                                            , Toast.LENGTH_SHORT).show();
+                                    firebaseUsers.child(userSendingKey).child("balance")
+                                            .setValue(newSendingUserBalance);
+                                    firebaseUsers.child(receivingUser[0].getDataBaseId()).child("balance")
+                                            .setValue(newReceivingUserBalance);
+                                    // Show user successful deposit
+                                    Toast.makeText(TransferActivity.this, "transfer of " + amount + "to "
+                                            + receivingUser[0].getEmail() + " successful!", Toast.LENGTH_SHORT).show();
 
-                                    Log.v("Transfer:", "transfer of " + amount + "to" + receivingUser[0].getEmail()+ " successful!"); //log success to console
+                                    Log.v("Transfer:", "transfer of " + amount + "to" + receivingUser[0].getEmail()
+                                            + " successful!"); // log success to console
                                     return;
                                 } else {
-                                    Toast.makeText(TransferActivity.this, "insufficient amount to transfer", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(TransferActivity.this, "insufficient amount to transfer",
+                                            Toast.LENGTH_SHORT).show();
                                     Log.v("Transfer:", "insufficient amount to transfer");
                                 }
                             } else
@@ -166,16 +173,21 @@ public class TransferActivity extends AppCompatActivity {
                             Log.v("not found", "no match found");
                         }
 
-
                     };
-                    @Override
-                    public void onCancelled (@NonNull DatabaseError error){
-                    }
 
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                    }
 
                 });
 
-                new Handler().postDelayed(new Runnable() { @Override public void run() { Intent intent = new Intent(TransferActivity.this, HomeActivity.class); startActivity(intent); } }, 1000);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent intent = new Intent(TransferActivity.this, HomeActivity.class);
+                        startActivity(intent);
+                    }
+                }, 1000);
             };
         });
     }
