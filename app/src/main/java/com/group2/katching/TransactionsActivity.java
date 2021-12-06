@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,9 +38,8 @@ public class TransactionsActivity extends AppCompatActivity {
     private DatabaseReference mFirebaseDatabase;
     private FirebaseDatabase mFirebaseInstance;
 
-    //Retrieve data from deposit fragment intent
-    Bundle intentData = getIntent().getExtras();
-    String email = intentData.getString("email");
+    private FirebaseAuth auth;
+
 
 
     private boolean isMenuDisplayed = false;
@@ -48,6 +48,11 @@ public class TransactionsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_dashboard);
+
+        auth = FirebaseAuth.getInstance();
+
+        String email = auth.getCurrentUser().getEmail();
+
 
         // Get toolbar items reference
         ImageView toolbar_arrowBack = findViewById(R.id.toolbar_backArrow);
@@ -114,6 +119,7 @@ public class TransactionsActivity extends AppCompatActivity {
                     Transaction transactionTemp = child.getValue(Transaction.class);
                     transactionTemp.setDataSnapshot(child);
 
+                    if(transactionTemp.getFrom().equals(email) || transactionTemp.getTo().equals(email))
                         transactionArrayList.add(transactionTemp);
                 }
                 // update the adapter
