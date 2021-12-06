@@ -72,6 +72,7 @@ public class SignupActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         // Get the reference to the database on firebase
         mFirebaseInstance = FirebaseDatabase.getInstance();
+
         // get reference to 'users' node
         mFirebaseDatabase = mFirebaseInstance.getReference("users");
 
@@ -156,24 +157,7 @@ public class SignupActivity extends AppCompatActivity {
             requestFocus(signupInputEmail);
             status[0] = false;
         }
-        mFirebaseDatabase = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference users = mFirebaseDatabase.child("users");
-        users.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                for(DataSnapshot child : snapshot.getChildren()) {
-                    String emailDatabase = String.valueOf(child.child("email").getValue()).toLowerCase();
-                    if(emailDatabase.equals(email)) {
-                        status[0] = false;
-                        Toast.makeText(getApplicationContext(), "This user already exists!", Toast.LENGTH_SHORT).show();
-                        requestFocus(signupInputEmail);
-                        Log.v(TAG,"Tested " + emailDatabase + " -> " + email + " status = " + status[0]);
-                    }
-                }
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) { }
-        });
+
         return status[0];
     }
 
