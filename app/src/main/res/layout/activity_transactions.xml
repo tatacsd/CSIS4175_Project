@@ -31,7 +31,7 @@
         android:layout_marginStart="16dp"
         android:fontFamily="@font/rajdhani_bold"
         android:paddingLeft="20dp"
-        android:text="Activities"
+        android:text="@string/transaction_log"
         android:paddingTop="10dp"
         android:textColor="@color/TextBody"
         android:textSize="24dp"
