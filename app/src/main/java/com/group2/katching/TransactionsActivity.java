@@ -88,7 +88,7 @@ public class TransactionsActivity extends AppCompatActivity {
         toolbar_id.setBackgroundColor(ContextCompat.getColor(this, R.color.SecondaryGreen));
         toolbar_logo.setImageResource(R.drawable.logo_purple_app);
 
-        // get all users from realtime database
+        // get all transactions from realtime database
         mFirebaseInstance = FirebaseDatabase.getInstance();
         mFirebaseDatabase = mFirebaseInstance.getReference("transactions");
 
