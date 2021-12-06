@@ -91,7 +91,6 @@ public class HomeActivity extends AppCompatActivity {
                 } else {
                     // just for test the user retrieving
                     String email = user.getEmail();
-                    Toast.makeText(HomeActivity.this, email, Toast.LENGTH_LONG).show();
                     mFirebase = FirebaseDatabase.getInstance();
                     DatabaseReference data = mFirebase.getReference("users");
                     data.addValueEventListener(new ValueEventListener() {
