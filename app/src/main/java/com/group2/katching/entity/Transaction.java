@@ -1,5 +1,7 @@
 package com.group2.katching.entity;
 
+import com.google.firebase.database.DataSnapshot;
+
 import java.util.Date;
 
 public class Transaction {
@@ -8,6 +10,7 @@ public class Transaction {
     private Double amount;
     private String memo;
     private String date;
+    private DataSnapshot dataSnapshot;
 
     public Transaction(String from, String to, Double amount, String memo, String date) {
         this.from = from;
@@ -65,4 +68,7 @@ public class Transaction {
         return date;
     }
 
+    public void setDataSnapshot(DataSnapshot dataSnapshot) {
+        this.dataSnapshot = dataSnapshot;
+    }
 }

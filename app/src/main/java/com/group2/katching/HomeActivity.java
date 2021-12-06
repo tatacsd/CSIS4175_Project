@@ -88,7 +88,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HomeActivity.this, TransactionsActivity.class);
-                intent.putExtra("id", userViewModel.getUserData().getDataBaseId());
+                intent.putExtra("email", userViewModel.getUserData().getEmail());
                 startActivity(intent);
             }
         });
