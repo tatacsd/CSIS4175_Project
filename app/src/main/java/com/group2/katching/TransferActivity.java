@@ -2,6 +2,7 @@ package com.group2.katching;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -13,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
@@ -23,9 +25,14 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.group2.katching.entity.Transaction;
 import com.group2.katching.entity.User;
 import com.group2.katching.ui.UserViewModel;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 public class TransferActivity extends AppCompatActivity {
@@ -36,8 +43,16 @@ public class TransferActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transfer);
+
+        View toolbar_id = findViewById(R.id.toolbar_id);
+        ImageView toolbar_logo = findViewById(R.id.toolbar_logo);
+        // change to admin page toolbar color and icon
+        toolbar_id.setBackgroundColor(ContextCompat.getColor(this, R.color.PrimaryPurple));
+        toolbar_logo.setImageResource(R.drawable.logo_green_app);
+
         mFirebase = FirebaseDatabase.getInstance();
-        DatabaseReference firebase = mFirebase.getReference("users");
+        DatabaseReference firebaseUsers = mFirebase.getReference("users");
+        DatabaseReference firebaseTransactions = mFirebase.getReference("transactions");
         final User[] receivingUser = new User[1];
 
         Button btnIncAmount = findViewById(R.id.increase_btn_transfer);
@@ -111,8 +126,17 @@ public class TransferActivity extends AppCompatActivity {
                                     // Start the transferring process
                                     Double newReceivingUserBalance = (receivingUser[0].getBalance() + amount);
                                     Double newSendingUserBalance = userSendingBalance[0] - amount;
-                                    firebase.child(userSendingKey).child("balance").setValue(newSendingUserBalance);
-                                    firebase.child(receivingUser[0].getDataBaseId()).child("balance").setValue(newReceivingUserBalance);
+
+                                    SimpleDateFormat df = new SimpleDateFormat("EEE, MMM d, yyyy");
+
+                                    Transaction newTransaction = new Transaction(userSendingKey, receivingUser[0].getDataBaseId(), amount, "completed", df.format(Calendar.getInstance().getTime()));
+                                    String transactionID = firebaseTransactions.push().getKey();
+                                    Log.e("Created a new TRANSACTION ID", transactionID);
+
+                                    firebaseTransactions.child(transactionID).setValue(newTransaction);
+
+                                    firebaseUsers.child(userSendingKey).child("balance").setValue(newSendingUserBalance);
+                                    firebaseUsers.child(receivingUser[0].getDataBaseId()).child("balance").setValue(newReceivingUserBalance);
                                     //Show user successful deposit
                                     Toast.makeText(TransferActivity.this, "transfer of " + amount + "to" + receivingUser[0].getEmail()+ " successful!"
                                             , Toast.LENGTH_SHORT).show();

@@ -2,6 +2,7 @@ package com.group2.katching;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -44,6 +46,12 @@ public class SignupActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
+        View toolbar_id = findViewById(R.id.toolbar_id);
+        ImageView toolbar_logo = findViewById(R.id.toolbar_logo);
+        // change to admin page toolbar color and icon
+        toolbar_id.setBackgroundColor(ContextCompat.getColor(this, R.color.PrimaryPurple));
+        toolbar_logo.setImageResource(R.drawable.logo_green_app);
 
         // Reference member variables
         signupInputEmail = (EditText) findViewById(R.id.txtUserEmail);
