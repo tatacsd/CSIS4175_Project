@@ -95,37 +95,38 @@ public class SignupActivity extends AppCompatActivity {
         String password = signupInputPassword.getText().toString().trim();
 
         if (!checkEmail()) {
+            Toast.makeText(getApplicationContext(), "This user already exists!", Toast.LENGTH_SHORT).show();
             return;
         }
-        if (!checkPassword()) {
+        else if (!checkPassword()) {
             return;
         }
-
-        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(SignupActivity.this,
-                new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(Task<AuthResult> task) {
-                        Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
-                        if (task.isSuccessful()) {
-                            startActivity(new Intent(SignupActivity.this, HomeActivity.class));
-                            finish();
-                        } else {
-                            Log.d(TAG, "Authentication failed." + task.getException());
+        else {
+            auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(SignupActivity.this,
+                    new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(Task<AuthResult> task) {
+                            Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
+                            if (task.isSuccessful()) {
+                                startActivity(new Intent(SignupActivity.this, HomeActivity.class));
+                                finish();
+                            } else {
+                                Log.d(TAG, "Authentication failed." + task.getException());
+                            }
                         }
-                    }
-                });
+                    });
 
-        if (!TextUtils.isEmpty(email)) {
-            createUser(email, balance, status);
+            if (!TextUtils.isEmpty(email)) {
+                createUser(email, balance, status);
+            }
+            Toast.makeText(getApplicationContext(), "You are successfully registered!", Toast.LENGTH_SHORT).show();
         }
-        Toast.makeText(getApplicationContext(), "You are successfully registered!", Toast.LENGTH_SHORT).show();
-
     }
 
     private void createUser(String email, double balance, boolean status) {
         if (TextUtils.isEmpty(userID)) {
             // In real apps this userId should be fetched
-            // if you dont have an id, create one
+            // if you don't have an id, create one
             userID = mFirebaseDatabase.push().getKey();
             Log.e("Created a new USER ID", userID);
         }
@@ -136,14 +137,35 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     private boolean checkEmail() {
+        final boolean[] status = new boolean[1];
+        status[0] = true;
         String email = signupInputEmail.getText().toString().trim();
+
         if (email.isEmpty() || !isEmailValid(email)) {
             Toast.makeText(getApplicationContext(), "Please insert a valid email!", Toast.LENGTH_SHORT).show();
             requestFocus(signupInputEmail);
-            return false;
+            status[0] = false;
         }
-        return true;
+        mFirebaseDatabase = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference users = mFirebaseDatabase.child("users");
+        users.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                for(DataSnapshot child : snapshot.getChildren()) {
+                    String emailDatabase = String.valueOf(child.child("email").getValue()).toLowerCase();
+                    if(emailDatabase.equals(email)) {
+                        requestFocus(signupInputEmail);
+                        status[0] = false;
+                        Log.v(TAG,"Tested" + emailDatabase + "-> " + email + status[0]);
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) { }
+        });
+        return status[0];
     }
+
     private boolean checkPassword() {
         String password = signupInputPassword.getText().toString().trim();
         if (password.isEmpty() || !isPasswordValid(password)) {

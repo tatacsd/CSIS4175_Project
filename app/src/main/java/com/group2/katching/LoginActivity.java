@@ -102,7 +102,6 @@ public class LoginActivity extends AppCompatActivity {
                             Log.v("test", "TestLogin email and password exist");
                             checkUserStatus();
                         }
-
                     }
                 });
     }
@@ -130,13 +129,10 @@ public class LoginActivity extends AppCompatActivity {
                             launchActivity(userStatusDataSnap, user);
                         }
                     }
-
                 }
 
                 @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
+                public void onCancelled(@NonNull DatabaseError databaseError) { }
             });
         }
     }
@@ -158,7 +154,6 @@ public class LoginActivity extends AppCompatActivity {
     private boolean checkEmail() {
         String email = etUsername.getText().toString().trim();
         if (email.isEmpty() || !isEmailValid(email)) {
-
             Toast.makeText(LoginActivity.this, "wrong email or password", Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -189,5 +184,4 @@ public class LoginActivity extends AppCompatActivity {
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
         }
     }
-
 }
