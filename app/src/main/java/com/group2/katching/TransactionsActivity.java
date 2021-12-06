@@ -37,9 +37,11 @@ public class TransactionsActivity extends AppCompatActivity {
     // DATABASE VARIABLES
     private DatabaseReference mFirebaseDatabase;
     private FirebaseDatabase mFirebaseInstance;
-
     private FirebaseAuth auth;
 
+    //Retrieve data from deposit fragment intent
+//    Intent intent = getIntent();
+//    String email = intent.getStringExtra("email");
 
 
     private boolean isMenuDisplayed = false;
@@ -50,9 +52,7 @@ public class TransactionsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_admin_dashboard);
 
         auth = FirebaseAuth.getInstance();
-
         String email = auth.getCurrentUser().getEmail();
-
 
         // Get toolbar items reference
         ImageView toolbar_arrowBack = findViewById(R.id.toolbar_backArrow);
