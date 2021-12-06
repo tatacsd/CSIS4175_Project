@@ -20,24 +20,16 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
         android:layout_marginEnd="52dp"
+        android:fontFamily="@font/rajdhani_medium"
         android:fontWeight="600"
+        android:gravity="center"
         android:text="@string/main_text"
-        android:textSize="24sp"
+        android:textColor="@color/DisabledGray"
+        android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/login_btn_main"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-<!--    <FrameLayout-->
-<!--        android:id="@+id/frameLayout_main"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_marginBottom="100dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.0" />-->
 
     <Button
         android:id="@+id/signup_btn_main"
@@ -63,5 +55,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/signup_btn_main"
         app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/rajdhani_bold"
+        android:text="Katching"
+        android:textColor="@color/SecondaryGreen"
+        android:textSize="45sp"
+        app:layout_constraintBottom_toTopOf="@+id/login_btn_main"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

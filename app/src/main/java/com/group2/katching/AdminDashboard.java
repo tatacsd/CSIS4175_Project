@@ -119,6 +119,5 @@ public class AdminDashboard extends AppCompatActivity {
                 Log.v(TAG, "Failed to read value.", error.toException());
             }
         });
-
     }
 }
